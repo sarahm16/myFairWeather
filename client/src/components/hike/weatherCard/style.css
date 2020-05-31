@@ -1,0 +1,21 @@
+.card-date{
+    font-size: 1.0rem;
+    font-weight: bold;
+    line-height: 110%;
+    margin: .7666666667rem 0 .46rem 0;
+}
+.col {
+    margin: 0px;
+}
+
+.summary {
+    background-color: rgba(128, 128, 128, 0.1);
+    margin: 20px;
+    padding: 7px 7px 15px 7px;
+}
+
+/* @media only screen and (max-width: 768px) {
+    .card {
+        background-color: rgba(0, 0, 0, 0.664)
+    }
+} */

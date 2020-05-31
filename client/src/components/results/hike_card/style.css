@@ -1,0 +1,50 @@
+.card-title
+{
+    padding: 12px;
+}
+.info-text
+{
+    font-size: 15px;
+}
+.three-cols
+{
+    display: inline-block;
+    width: 33%;
+}
+.location-cols {
+    width: 40%
+}
+.btn-by2
+{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+}
+
+#More-Info,
+#Less-Info {
+    border: none;
+    padding-bottom: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.no-padding
+{
+    padding: 0;
+}
+
+i.icon-yellow {
+    color: gold
+}
+
+i.icon-green {
+    color: green
+}
+
+i.icon-red {
+    color: red;
+}
