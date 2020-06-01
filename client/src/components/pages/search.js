@@ -128,8 +128,8 @@ class Search extends Component {
                                 </select>
                             </div>
                             {/* <div className='sort-buttons'> */}
-                                <div className='col s3 m4 l4'>Sort by:          </div>  
-                                    <div className='col s5 m4 l4 sort-buttons'>
+                                <div className='sort-buttons'>Sort by:          </div>  
+                                    <div className='sort-buttons'>
                                         <label>
                                             <input 
                                             onChange={this.onChange} 
@@ -141,7 +141,7 @@ class Search extends Component {
                                         </label>
                                     </div>
                             {/* </div> */}
-                            <div className='col s4 l4 m4 sort-buttons'>
+                            <div className='sort-buttons'>
                                 <label>
                                     <input 
                                     onChange={this.onChange} 
@@ -152,8 +152,8 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            {/* <br />
-                            <br /> */}
+                            <br />
+                            <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
