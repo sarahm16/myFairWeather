@@ -130,8 +130,8 @@ class Search extends Component {
                                 </select>
                             </div>
                             {/* <div className='sort-buttons'> */}
-                                <div className='sort-buttons'>Sort by:          </div>  
-                                    <div className='sort-buttons'>
+                                <div className='col s4 sort-buttons'>Sort by:</div>  
+                                    <div className='col s4 sort-buttons'>
                                         <label>
                                             <input 
                                             onChange={this.onChange} 
@@ -143,7 +143,7 @@ class Search extends Component {
                                         </label>
                                     </div>
                             {/* </div> */}
-                            <div className='sort-buttons'>
+                            <div className='col s4 sort-buttons'>
                                 <label>
                                     <input 
                                     onChange={this.onChange} 
