@@ -63,7 +63,7 @@ class Search extends Component {
             isSubmitted: true
         })
     }
-// adding comments 
+
     render() {
         return(
             <div>
@@ -127,18 +127,18 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
-                                <div className='col s4 sort-buttons'>Sort by:</div>  
-                                    <div className='col s4 sort-buttons'>
-                                        <label>
-                                            <input 
-                                            onChange={this.onChange} 
-                                            value='distance'
-                                            id='sort' className="with-gap" 
-                                            name="group1" type="radio" 
-                                            checked={this.state.sort === 'distance'}  />
-                                            <span>Distance</span>
-                                        </label>
-                                    </div>
+                            <div className='col s4sort-buttons'>Sort by:</div>  
+                                <div className='col s4 sort-buttons'>
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' className="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                                </div>
                             <div className='col s4 sort-buttons'>
                                 <label>
                                     <input 
@@ -150,7 +150,8 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            
+                            <br />
+                            <br />
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
