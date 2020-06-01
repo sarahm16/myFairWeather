@@ -3,7 +3,7 @@
     position: fixed;
     left: 0;
     top: 10%;
-    width: 50%;
+    width: 30%;
     height: 90%;
     z-index: 990;
     background: transparent;
@@ -84,3 +84,12 @@
   margin-left: 2%;
 }
   
+@media only screen and (max-width: 768px) {
+  .modal .modal_content {
+      width: 80%;
+      height: 70%
+  }
+  .modal {
+    width: 80%
+  }
+}

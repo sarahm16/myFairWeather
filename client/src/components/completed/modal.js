@@ -15,13 +15,15 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
             </label>
 
             <div className='row'>
-              <div className='col s12'>
+              <div className='col m3 l3'></div>
+              <div className='col s12 m3 l3'>
                 <button className="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</button>
               </div>
 
-              <div className='col s12'>              
+              <div className='col s12 m3 l3'>              
                 <button className="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</button>
               </div>
+              <div className='col m3 l3'></div>
 
             </div>
         </form>

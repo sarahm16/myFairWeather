@@ -21,7 +21,7 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        let l = zipcodes.lookupByName('seattle', 'wa');
+        let l = zipcodes.lookupByName('seattle', 'washington');
         console.log('seattle: ' + l)
         console.log(this.props.zipcode)
         let id = this.props.auth.user.id
