@@ -8,7 +8,7 @@
 }
 
 .sort-buttons {
-    display: inline
+    display: inline-block
 }
 
 form {
