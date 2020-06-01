@@ -48,3 +48,17 @@ i.icon-green {
 i.icon-red {
     color: red;
 }
+
+img,
+.date {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.date {
+    width: 100%;
+    color:white;
+    background-color: rgba(32, 32, 32, 0.753);
+    z-index: 10;
+}

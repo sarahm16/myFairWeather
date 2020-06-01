@@ -125,6 +125,7 @@ render () {
                 <div className="card hoverable border">
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
+                        {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                             <img  src={this.props.imgMedium} alt = "hike"/>
                             <span className="card-title bg">{this.props.name}
                             {/* <br />
@@ -140,7 +141,6 @@ render () {
                                 {this.props.type =='completed-hikes' && <div className="three-cols">Report: {this.props.userComment}</div>}
                                 <div className="three-cols">Difficulty: {this.props.difficulty}
                                 <br />
-                                {this.props.type =='completed-hikes' && <div>Date: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                                 </div>
                                 
 
