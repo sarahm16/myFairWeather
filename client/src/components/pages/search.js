@@ -127,7 +127,7 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
-                            <div className='col s4sort-buttons'>Sort by:</div>  
+                            <div className='col s4 sort-buttons'>Sort by:</div>  
                                 <div className='col s4 sort-buttons'>
                                     <label>
                                         <input 
@@ -152,7 +152,9 @@ class Search extends Component {
                             </div>
                             <br />
                             <br />
-                            <Button name='Search Hikes' type='submit' />
+                            <div className='row'>
+                                <Button name='Search Hikes' type='submit' />
+                            </div>
                         </form>
                         {this.state.isSubmitted && <Results
                             sort={this.state.sort}
