@@ -127,7 +127,6 @@ class Search extends Component {
                                     <option value="10000">10000 ft</option>
                                 </select>
                             </div>
-                            {/* <div className='sort-buttons'> */}
                                 <div className='col s4 sort-buttons'>Sort by:</div>  
                                     <div className='col s4 sort-buttons'>
                                         <label>
@@ -140,7 +139,6 @@ class Search extends Component {
                                             <span>Distance</span>
                                         </label>
                                     </div>
-                            {/* </div> */}
                             <div className='col s4 sort-buttons'>
                                 <label>
                                     <input 
