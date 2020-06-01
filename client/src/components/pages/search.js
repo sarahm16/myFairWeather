@@ -154,7 +154,6 @@ class Search extends Component {
                             </div>
                             {/* <br />
                             <br /> */}
-                            <div className='col s12'><br /></div>
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
