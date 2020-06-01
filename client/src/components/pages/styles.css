@@ -7,12 +7,17 @@
     margin: 0 auto;
 }
 
+.divider {
+    border-bottom: 1px dashed teal;
+}
+
 .sort-buttons {
     display: inline-block
 }
 
 form {
     margin: 10px;
+    padding: 10px;
 }
 
 .stats{

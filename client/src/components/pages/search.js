@@ -84,8 +84,6 @@ class Search extends Component {
                                 <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
                             </div>
                             <div className='input-field col s12 divider'></div>
-                            <br />
-                            <br />
                             <div className='input-field col s12'>
                                 <input
                                     onChange={this.onChange}
