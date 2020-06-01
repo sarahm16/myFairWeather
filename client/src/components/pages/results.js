@@ -21,6 +21,8 @@ class Results extends Component  {
     }
 
     componentDidMount() {
+        let l = zipcodes.lookupByName('seattle', 'wa');
+        console.log('seattle: ' + l)
         console.log(this.props.zipcode)
         let id = this.props.auth.user.id
 
@@ -42,7 +44,6 @@ class Results extends Component  {
                     if(zipcodes.lookup(zipcode)) {
                         lat = zipcodes.lookup(zipcode).latitude
                         lon = zipcodes.lookup(zipcode).longitude
-                    
                     }
                     else {
                         console.log('invalid zip')
