@@ -150,8 +150,7 @@ class Search extends Component {
                                     <span>Quality</span>
                                 </label>
                             </div>
-                            <br />
-                            <br />
+                            
                             <Button name='Search Hikes' type='submit' />
                         </form>
                         {this.state.isSubmitted && <Results
