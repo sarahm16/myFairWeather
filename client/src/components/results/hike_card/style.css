@@ -1,21 +1,27 @@
-.card-title
-{
-    padding: 12px;
+.card-title {
+    color: white;
+    background-color: rgba(32, 32, 32, 0.603);
+    width: 100%;
 }
-.info-text
-{
+
+.hike-name {
+    height: 15%;
+}
+
+.info-text {
     font-size: 15px;
 }
-.three-cols
-{
+
+.three-cols {
     display: inline-block;
     width: 33%;
 }
+
 .location-cols {
     width: 40%
 }
-.btn-by2
-{
+
+.btn-by2 {
     display: inline-block;
     box-sizing: border-box;
     width: 50%;
