@@ -111,7 +111,7 @@ class HikeCard extends Component {
     }
     
 render () {
-    console.log(this.props.imgMedium);
+    console.log(this.props.difficulty);
     return (
         <div className="row">
              <Modal
@@ -138,16 +138,57 @@ render () {
                         </div>
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
                             <div className = "info-text">
-                                <div className="three-cols">Length: {this.props.length} miles
+                                <div className="col s6 m6 l6">Length: {this.props.length} miles
                                     <br />
                                     Elevation gain: {this.props.ascent} ft
                                 </div>
-                                {this.props.type =='completed-hikes' && <div className="three-cols">Report: {this.props.userComment}</div>}
-                                <div className="three-cols">Difficulty: {this.props.difficulty}
-                                <br />
+
+                                {this.props.difficulty === 'green' &&
+                                <div className="col s6">Difficulty: <br />
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                </div>}
+
+                                {this.props.difficulty === 'greenBlue' &&
+                                <div className="col s6">Difficulty: <br />
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                </div>}
+
+                                {this.props.difficulty === 'blue' &&
+                                <div className="col s6">Difficulty: <br />
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                </div>}
+
+                                {this.props.difficulty === 'blueBlack' &&
+                                <div className="col s6">Difficulty: <br />
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                </div>}
+
+                                {this.props.difficulty === 'black' &&
+                                <div className="col s6">Difficulty: <br />
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                <i className="small material-icons icon-yellow">terrain</i>
+                                </div>}
+                                
+                            
+                                
+                                
+                                {/* {this.props.difficulty} */}
+                                <div className='row'>
+                                    <div className='col s12 m12 l12'>
+                                        {this.props.type =='completed-hikes' && <p className='report'>Report: {this.props.userComment}</p>}
+                                    </div>
                                 </div>
                                 
-
                                 {this.props.type !=='completed-hikes' && <div className="three-cols">
                                     <i className="material-icons">location_on</i> {this.props.location}
                                 </div>}
@@ -172,7 +213,7 @@ render () {
                             {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
                             {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
-                            {this.state.show_more && <button  id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
+                            {this.state.show_more && <button id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
                     </div>
                 </div>
             </div>

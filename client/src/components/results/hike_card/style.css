@@ -27,12 +27,18 @@
     width: 50%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
+}
 
+.report {
+    background-color: rgba(128, 128, 128, 0.1);
+    margin: 20px;
+    padding: 10px;
 }
 
 #More-Info,
 #Less-Info {
     border: none;
+    border-radius: 5px;
     padding-bottom: 10px;
     margin-top: 3px;
     margin-bottom: 3px;
