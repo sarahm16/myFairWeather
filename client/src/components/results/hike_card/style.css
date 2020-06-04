@@ -8,8 +8,20 @@
     height: 15%;
 }
 
+.location {
+    width: 30%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    color: white;
+    background-color: rgba(32, 32, 32, 0.603);
+    padding-bottom: 5px;
+}
+
 .info-text {
     font-size: 15px;
+    color: #1a756c;
 }
 
 .three-cols {

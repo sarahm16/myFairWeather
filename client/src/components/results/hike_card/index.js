@@ -127,6 +127,9 @@ render () {
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
                         {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
+                        {this.props.type !=='completed-hikes' && <div className='location'>
+                                <i className="material-icons">location_on</i> {this.props.location}
+                            </div>}
                             {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt = "hike"/>}
                             {this.props.imgMedium === '' && 
                             <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
@@ -189,9 +192,7 @@ render () {
                                     </div>
                                 </div>
                                 
-                                {this.props.type !=='completed-hikes' && <div className="three-cols">
-                                    <i className="material-icons">location_on</i> {this.props.location}
-                                </div>}
+                                
 
                             </div>
                         </div>
