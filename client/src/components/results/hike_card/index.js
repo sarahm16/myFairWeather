@@ -111,6 +111,7 @@ class HikeCard extends Component {
     }
     
 render () {
+    console.log(this.props.imgMedium);
     return (
         <div className="row">
              <Modal
@@ -126,7 +127,9 @@ render () {
                     <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
                         {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
-                            <img  src={this.props.imgMedium} alt = "hike"/>
+                            {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt = "hike"/>}
+                            {this.props.imgMedium === '' && 
+                            <img src='https://images.fineartamerica.com/images-medium-large-5/canadian-mountain-range-kayleigh-semeniuk.jpg' alt = "hike"/>}
                             <span className="card-title bg">{this.props.name}
                             {/* <br />
                             {this.props.location} */}
