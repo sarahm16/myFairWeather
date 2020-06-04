@@ -5,7 +5,8 @@
 }
 
 .hike-name {
-    height: 15%;
+    margin-bottom: 0px;
+    padding: 5px;
 }
 
 .location {
@@ -20,7 +21,7 @@
 }
 
 .info-text {
-    font-size: 15px;
+    font-size: 10px;
     color: #1a756c;
 }
 

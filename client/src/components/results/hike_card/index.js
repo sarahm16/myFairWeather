@@ -134,7 +134,7 @@ render () {
                             {this.props.imgMedium === '' && 
                             <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
                             <div className='hike-name'>
-                            <span className="card-title bg">{this.props.name}</span>
+                                <h6 className="card-title bg">{this.props.name}</h6>
                             </div>
                             {/* <br />
                             {this.props.location} */}
