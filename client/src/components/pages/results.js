@@ -17,18 +17,13 @@ class Results extends Component  {
             loading: true,
             page: '',
             invalidZip: false,
-            pageNumber: 0
+            pageNumber: 1
         }
     }
 
     componentDidMount() {
-        console.log('props')
-        console.log(this.props)
         this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
-
-        console.log('results component state')
-        console.log(this.state.trails);
 
         //function that sets state of component with results of api call
         let useResults = (trailList, page) => {
@@ -43,7 +38,6 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                console.log('we did it');
                 this.setState({
                     loading: false
                 })
@@ -73,6 +67,7 @@ class Results extends Component  {
     }
 
     render() {
+        let trails = this.state.trails.slice(this.state.pageNumber, this.state.pageNumber * 10)
         return(
             <div>
                 {/* materialize loading bar for when hikes are loading */}
@@ -81,7 +76,7 @@ class Results extends Component  {
                         <div className="indeterminate"></div>
                     </div> }
                 {/* map the array of trails, create hikecard component for each trail */}
-                {this.state.trails.map(trail => {
+                {trails.map(trail => {
                     return <HikeCard type={this.props.type}
                     id={trail.id}
                     key={trail.id}

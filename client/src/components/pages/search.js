@@ -58,6 +58,12 @@ class Search extends Component {
           });
     }
 
+    nextPage = () => {
+        let nextPage = this.state.pageNumber + 1;
+        this.setState({pageNumber: nextPage})
+        console.log('page: ' + this.state.pageNumber)
+    }
+
     onChange = event => {
         this.setState({
             [event.target.id]: event.target.value,
@@ -90,7 +96,7 @@ class Search extends Component {
             .then(res => {
                 if(this.state.maxElevation !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-                    let filtered = filteredHikes.slice(0, 4);
+                    let filtered = filteredHikes;
                     this.setState({
                         isSubmitted: true,
                         trails: filtered
@@ -98,7 +104,7 @@ class Search extends Component {
                 }
                 else {
                     //display first 5 results
-                    let unfiltered = res.data.trails.slice(0, 4);
+                    let unfiltered = res.data.trails;
                     this.setState({
                         isSubmitted: true,
                         trails: unfiltered
@@ -205,7 +211,7 @@ class Search extends Component {
                             type='search-results'
                             trails={this.state.trails}
                             />
-                        </div>}
+                            </div>}
                     </div>
                 </div>
             </div>
