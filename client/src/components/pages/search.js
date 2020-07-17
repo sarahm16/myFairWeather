@@ -58,12 +58,6 @@ class Search extends Component {
           });
     }
 
-    nextPage = () => {
-        let nextPage = this.state.pageNumber + 1;
-        this.setState({pageNumber: nextPage})
-        console.log('page: ' + this.state.pageNumber)
-    }
-
     onChange = event => {
         this.setState({
             [event.target.id]: event.target.value,
@@ -209,10 +203,9 @@ class Search extends Component {
                         </form>
                         {this.state.isSubmitted && <div><Results
                             type='search-results'
-                            trails={this.state.trails.slice(this.state.pageNumber, this.state.pageNumber + 4)}
+                            trails={this.state.trails}
                             />
-                            <button onClick={this.nextPage}>Next Page</button>
-                            </div>}
+                        </div>}
                     </div>
                 </div>
             </div>

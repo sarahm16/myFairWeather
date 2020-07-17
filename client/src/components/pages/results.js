@@ -16,7 +16,8 @@ class Results extends Component  {
             noTrails: false,
             loading: true,
             page: '',
-            invalidZip: false
+            invalidZip: false,
+            pageNumber: 0
         }
     }
 
@@ -41,44 +42,9 @@ class Results extends Component  {
         }
 
         switch (this.props.type) {
-            // case 'search-results':
-            //     let {lat, lon, length, dist, elev, sort, zipcode } = this.props
-            //     if(zipcode !== '') {
-            //         if(zipcodes.lookup(zipcode)) {
-            //             lat = zipcodes.lookup(zipcode).latitude
-            //             lon = zipcodes.lookup(zipcode).longitude
-            //         }
-            //         else {
-            //             console.log('invalid zip')
-            //             this.setState({
-            //                 invalidZip: true,
-            //                 page: 'invalid zip',
-            //                 loading: false
-            //             })
-            //         }
-            //     }
-            //     API.searchHikes(lat, lon, length, dist, elev, sort)
-            //         .then(res => {
-            //             if(elev !== null){
-            //                 const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                            
-            //                 let filtered = filteredHikes.slice(0, 4);
-            //                 useResults(filtered, 'search-results')
-            //                 //useResults(filteredHikes, 'search-results')
-            //             }
-            //             else {
-            //                 //display first 5 results
-            //                 let results = res.data.trails.slice(0, 4);
-            //                 useResults(results, 'search-results')
-
-            //                 //useResults(res.data.trails, 'search-results')
-            //             }
-            //         })
-            //     break;
             case 'search-results':
                 console.log('we did it');
                 this.setState({
-                    // trails: this.props.trails,
                     loading: false
                 })
             break;
@@ -98,6 +64,12 @@ class Results extends Component  {
             default:
                 break;
         }
+    }
+
+    nextPage = () => {
+        let nextPage = this.state.pageNumber + 1;
+        this.setState({pageNumber: nextPage})
+        console.log('page: ' + this.state.pageNumber)
     }
 
     render() {
@@ -128,6 +100,7 @@ class Results extends Component  {
                     day={trail.day}
                     />
                 })}
+                <button onClick={this.nextPage}>Next Page</button>
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
                 {this.state.invalidZip && <Alert page={this.state.page}/>}
