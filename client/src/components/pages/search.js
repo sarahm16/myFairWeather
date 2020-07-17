@@ -17,6 +17,25 @@ import './styles.css';
 let zipcodes = require('zipcodes');
 
 class Search extends Component {
+
+    constructor() {
+        super();
+            this.state = {
+                pageNumber: 0,
+                trails: [],
+                minLength: "",
+                maxElevation: "",
+                maxTravel: "",
+                sort: "",
+                latitude: 0,
+                longitude: 0,
+                zipcode: '',
+                hikes: [],
+                isSubmitted: false
+            };
+            this.onSubmit=this.onSubmit.bind(this);     
+    }
+
     componentDidMount() {
         //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
@@ -39,22 +58,11 @@ class Search extends Component {
           });
     }
 
-    constructor() {
-        super();
-            this.state = {
-                trails: [],
-                minLength: "",
-                maxElevation: "",
-                maxTravel: "",
-                sort: "",
-                latitude: 0,
-                longitude: 0,
-                zipcode: '',
-                hikes: [],
-                isSubmitted: false
-            };
-            this.onSubmit=this.onSubmit.bind(this);     
-      }
+    nextPage = () => {
+        let nextPage = this.state.pageNumber + 1;
+        this.setState({pageNumber: nextPage})
+        console.log('page: ' + this.state.pageNumber)
+    }
 
     onChange = event => {
         this.setState({
@@ -65,11 +73,7 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        // this.setState({
-        //     isSubmitted: true
-        // })
 
-        //let {lat, lon, length, dist, elev, sort, zipcode } = this.props
         if(this.state.zipcode !== '') {
             if(zipcodes.lookup(this.state.zipcode)) {
                 this.setState({
@@ -203,16 +207,17 @@ class Search extends Component {
                                 </div>
                             </div>
                         </form>
-                        {this.state.isSubmitted && <Results
+                        {this.state.isSubmitted && <div><Results
                             type='search-results'
-                            trails={this.state.trails}
-                            />}
+                            trails={this.state.trails.slice(this.state.pageNumber, this.state.pageNumber + 4)}
+                            />
+                            <button onClick={this.nextPage}>Next Page</button>
+                            </div>}
                     </div>
                 </div>
             </div>
         )        
-    }
-    
+    }    
 }
 
 
