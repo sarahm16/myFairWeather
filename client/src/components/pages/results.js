@@ -21,10 +21,13 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        // let l = zipcodes.lookupByName('seattle', 'washington');
-        // console.log('seattle: ' + l)
-        // console.log(this.props.zipcode)
+        console.log('props')
+        console.log(this.props)
+        this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
+
+        console.log('results component state')
+        console.log(this.state.trails);
 
         //function that sets state of component with results of api call
         let useResults = (trailList, page) => {
@@ -38,40 +41,47 @@ class Results extends Component  {
         }
 
         switch (this.props.type) {
-            case 'search-results':
-                let {lat, lon, length, dist, elev, sort, zipcode } = this.props
-                if(zipcode !== '') {
-                    if(zipcodes.lookup(zipcode)) {
-                        lat = zipcodes.lookup(zipcode).latitude
-                        lon = zipcodes.lookup(zipcode).longitude
-                    }
-                    else {
-                        console.log('invalid zip')
-                        this.setState({
-                            invalidZip: true,
-                            page: 'invalid zip',
-                            loading: false
-                        })
-                    }
-                }
-                API.searchHikes(lat, lon, length, dist, elev, sort)
-                    .then(res => {
-                        if(elev !== null){
-                            const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
+            // case 'search-results':
+            //     let {lat, lon, length, dist, elev, sort, zipcode } = this.props
+            //     if(zipcode !== '') {
+            //         if(zipcodes.lookup(zipcode)) {
+            //             lat = zipcodes.lookup(zipcode).latitude
+            //             lon = zipcodes.lookup(zipcode).longitude
+            //         }
+            //         else {
+            //             console.log('invalid zip')
+            //             this.setState({
+            //                 invalidZip: true,
+            //                 page: 'invalid zip',
+            //                 loading: false
+            //             })
+            //         }
+            //     }
+            //     API.searchHikes(lat, lon, length, dist, elev, sort)
+            //         .then(res => {
+            //             if(elev !== null){
+            //                 const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
                             
-                            let filtered = filteredHikes.slice(0, 4);
-                            useResults(filtered, 'search-results')
-                            //useResults(filteredHikes, 'search-results')
-                        }
-                        else {
-                            //display first 5 results
-                            let results = res.data.trails.slice(0, 4);
-                            useResults(results, 'search-results')
+            //                 let filtered = filteredHikes.slice(0, 4);
+            //                 useResults(filtered, 'search-results')
+            //                 //useResults(filteredHikes, 'search-results')
+            //             }
+            //             else {
+            //                 //display first 5 results
+            //                 let results = res.data.trails.slice(0, 4);
+            //                 useResults(results, 'search-results')
 
-                            //useResults(res.data.trails, 'search-results')
-                        }
-                    })
-                break;
+            //                 //useResults(res.data.trails, 'search-results')
+            //             }
+            //         })
+            //     break;
+            case 'search-results':
+                console.log('we did it');
+                this.setState({
+                    // trails: this.props.trails,
+                    loading: false
+                })
+            break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)

@@ -42,15 +42,16 @@ class Search extends Component {
     constructor() {
         super();
             this.state = {
-            minLength: "",
-            maxElevation: "",
-            maxTravel: "",
-            sort: "",
-            latitude: 0,
-            longitude: 0,
-            zipcode: '',
-            hikes: [],
-            isSubmitted: false
+                trails: [],
+                minLength: "",
+                maxElevation: "",
+                maxTravel: "",
+                sort: "",
+                latitude: 0,
+                longitude: 0,
+                zipcode: '',
+                hikes: [],
+                isSubmitted: false
             };
             this.onSubmit=this.onSubmit.bind(this);     
       }
@@ -64,9 +65,9 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        this.setState({
-            isSubmitted: true
-        })
+        // this.setState({
+        //     isSubmitted: true
+        // })
 
         //let {lat, lon, length, dist, elev, sort, zipcode } = this.props
         if(this.state.zipcode !== '') {
@@ -75,7 +76,6 @@ class Search extends Component {
                     latitude: zipcodes.lookup(this.state.zipcode).latitude,
                     longitude: zipcodes.lookup(this.state.zipcode).longitude
                 })
-                
             }
             //worry about this later
 
@@ -90,19 +90,21 @@ class Search extends Component {
         }
         API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
             .then(res => {
-                console.log('successful search');
                 if(this.state.maxElevation !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-                    
                     let filtered = filteredHikes.slice(0, 4);
-                    //useResults(filtered, 'search-results')
-                    //useResults(filteredHikes, 'search-results')
+                    this.setState({
+                        isSubmitted: true,
+                        trails: filtered
+                    })
                 }
                 else {
                     //display first 5 results
-                    let results = res.data.trails.slice(0, 4);
-                    //useResults(results, 'search-results')
-                    //useResults(res.data.trails, 'search-results')
+                    let unfiltered = res.data.trails.slice(0, 4);
+                    this.setState({
+                        isSubmitted: true,
+                        trails: unfiltered
+                    })
                 }
             })        
     }
@@ -202,14 +204,8 @@ class Search extends Component {
                             </div>
                         </form>
                         {this.state.isSubmitted && <Results
-                            sort={this.state.sort}
-                            zipcode={this.state.zipcode}
                             type='search-results'
-                            dist={this.state.maxTravel}
-                            length={this.state.minLength}
-                            lat={this.state.latitude}
-                            lon={this.state.longitude}
-                            elev={this.state.maxElevation}
+                            trails={this.state.trails}
                             />}
                     </div>
                 </div>
