@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     searchHikes: function(lat, lon, length, dist, elev, sort) {
-        let resultQty = "&maxResults=10";
+        let resultQty = "&maxResults=50";
         let apiKey = process.env.REACT_APP_HIKING_PROJECT_API_KEY;
         
         let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
@@ -14,8 +14,7 @@ export default {
     },
 
     addFavorite: function(hike) {
-
-        console.log('hike id: ' + hike.id)
+        //console.log('hike id: ' + hike.id)
 
         axios.post('api/users/favorite', hike)
             .then(res => {console.log(res)})
@@ -26,7 +25,6 @@ export default {
 
     displayFavorites: function(id) {
         return axios.get(`/api/users/favorite/${id}`)
-
     },
 
     deleteFavorite: function(id, userID) {

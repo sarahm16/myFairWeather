@@ -21,9 +21,9 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        let l = zipcodes.lookupByName('seattle', 'washington');
-        console.log('seattle: ' + l)
-        console.log(this.props.zipcode)
+        // let l = zipcodes.lookupByName('seattle', 'washington');
+        // console.log('seattle: ' + l)
+        // console.log(this.props.zipcode)
         let id = this.props.auth.user.id
 
         //function that sets state of component with results of api call
@@ -58,12 +58,19 @@ class Results extends Component  {
                     .then(res => {
                         if(elev !== null){
                             const filteredHikes = res.data.trails.filter(trail => trail.ascent < elev)
-                            useResults(filteredHikes, 'search-results')
+                            
+                            let filtered = filteredHikes.slice(0, 4);
+                            useResults(filtered, 'search-results')
+                            //useResults(filteredHikes, 'search-results')
                         }
-                        else {useResults(res.data.trails, 'search-results')}
+                        else {
+                            //display first 5 results
+                            let results = res.data.trails.slice(0, 4);
+                            useResults(results, 'search-results')
+
+                            //useResults(res.data.trails, 'search-results')
+                        }
                     })
-                
-                
                 break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
