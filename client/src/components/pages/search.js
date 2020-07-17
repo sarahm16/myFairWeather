@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
+
+
 import Button from '../button';
 import Label from '../label';
 import Results from './results';
 import Navbar from '../navbar';
+import API from '../../utils/API';
 
 import M from 'materialize-css';
 
 import './styles.css';
+
+let zipcodes = require('zipcodes');
 
 class Search extends Component {
     componentDidMount() {
@@ -62,6 +67,44 @@ class Search extends Component {
         this.setState({
             isSubmitted: true
         })
+
+        //let {lat, lon, length, dist, elev, sort, zipcode } = this.props
+        if(this.state.zipcode !== '') {
+            if(zipcodes.lookup(this.state.zipcode)) {
+                this.setState({
+                    latitude: zipcodes.lookup(this.state.zipcode).latitude,
+                    longitude: zipcodes.lookup(this.state.zipcode).longitude
+                })
+                
+            }
+            //worry about this later
+
+            // else {
+            //     console.log('invalid zip')
+            //     this.setState({
+            //         invalidZip: true,
+            //         page: 'invalid zip',
+            //         loading: false
+            //     })
+            // }
+        }
+        API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
+            .then(res => {
+                console.log('successful search');
+                if(this.state.maxElevation !== null){
+                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
+                    
+                    let filtered = filteredHikes.slice(0, 4);
+                    //useResults(filtered, 'search-results')
+                    //useResults(filteredHikes, 'search-results')
+                }
+                else {
+                    //display first 5 results
+                    let results = res.data.trails.slice(0, 4);
+                    //useResults(results, 'search-results')
+                    //useResults(res.data.trails, 'search-results')
+                }
+            })        
     }
 
     render() {

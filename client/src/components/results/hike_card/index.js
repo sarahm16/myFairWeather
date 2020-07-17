@@ -111,7 +111,6 @@ class HikeCard extends Component {
     }
     
 render () {
-    console.log(this.props.difficulty);
     return (
         <div className="row">
              <Modal
@@ -191,9 +190,6 @@ render () {
                                         {this.props.type =='completed-hikes' && <p className='report'>Report: {this.props.userComment}</p>}
                                     </div>
                                 </div>
-                                
-                                
-
                             </div>
                         </div>
                     </a>
