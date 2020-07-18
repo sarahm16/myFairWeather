@@ -12,7 +12,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import Stats from './pages/stats';
 import Search from './pages/search';
 import FavoriteContainer from './pages/favorites/favoriteContainer';
-import CompletedContainer from './components/completed/completedContainer';
+import CompletedContainer from './pages/completed/completedContainer';
 import 'materialize-css/dist/css/materialize.min.css';
 
 import jwt_decode from "jwt-decode";
