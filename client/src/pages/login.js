@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from '../../actions/authActions';
+import { loginUser } from '../actions/authActions';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import Button from '../button';
-import Label from '../label';
+import Button from '../components/button';
+import Label from '../componenets/label';
 
 class Login extends Component {
   constructor() {

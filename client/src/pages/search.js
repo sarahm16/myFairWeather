@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-
-
-import Button from '../button';
-import Label from '../label';
+import Button from '../components/button';
+import Label from '../components/label';
 import Results from './results';
-import Navbar from '../navbar';
-import API from '../../utils/API';
+import Navbar from '../components/navbar';
+import API from '../utils/API';
 
 import M from 'materialize-css';
 

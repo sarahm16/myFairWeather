@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import HikeCard from '../results/hike_card/index';
-import Alert from '../alert';
-import API from '../../utils/API';
-
-let zipcodes = require('zipcodes');
+import HikeCard from '../components/results/hike_card/index';
+import Alert from '../components/alert';
+import API from '../utils/API';
 
 class Results extends Component  {
-
     constructor() {
         super();
         this.state = {
@@ -22,7 +19,7 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        this.setState({trails: this.props.trails})
+        //this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
 
         //function that sets state of component with results of api call
@@ -44,14 +41,14 @@ class Results extends Component  {
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
                     .then(res => {
-                        //console.log(res.data)
                         useResults(res.data, 'favorites')
                     })
                 break;
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
-                    .then(res => {useResults(res.data, 'completed'); console.log(res.data)})
+                    .then(res => {useResults(res.data, 'completed');
+                })
                 break;       
             default:
                 break;
@@ -61,11 +58,11 @@ class Results extends Component  {
     nextPage = () => {
         let nextPage = this.state.pageNumber + 1;
         this.setState({pageNumber: nextPage})
-        console.log('page: ' + this.state.pageNumber)
     }
 
     render() {
         let trails = this.state.trails.slice(this.state.pageNumber, this.state.pageNumber * 10)
+        
         return(
             <div>
                 {/* materialize loading bar for when hikes are loading */}

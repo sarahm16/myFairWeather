@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 import { Bar } from 'react-chartjs-2'
 
-import Navbar from '../navbar';
-import API from '../../utils/API';
+import Navbar from '../components/navbar/index';
+import API from '../utils/API';
 import './styles.css'
 
 
