@@ -38,9 +38,7 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                this.setState({
-                    loading: false
-                })
+                useResults(this.props.trails, 'search-results')
             break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
