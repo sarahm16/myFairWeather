@@ -1,29 +1,26 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import './App.css';
-// import Navbar from './components/navbar';
-import Register from './pages/register';
-import Login from './pages/login';
+
 import PrivateRoute from "./components/routes/privateRoute";
 
-
+import Register from './pages/register';
+import Login from './pages/login';
 import Dashboard from "./components/dashboard/dashboard";
-
 import Stats from './pages/stats';
 import Search from './pages/search';
 import FavoriteContainer from './pages/favorites/favoriteContainer';
 import CompletedContainer from './pages/completed/completedContainer';
-import 'materialize-css/dist/css/materialize.min.css';
+import Background from "./background";
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
 import { Provider } from "react-redux";
 import store from './store';
 
-import Background from "./background";
-
+//css imports
+import 'materialize-css/dist/css/materialize.min.css';
+import './App.css';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {

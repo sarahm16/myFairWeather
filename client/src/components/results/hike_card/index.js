@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import './style.css';
 import API from '../../../utils/API';
 import Weather from '../../../utils/weather';
-import Modal from '../../completed/modal';
+import Modal from '../../../pages/completed/modal';
 import Hike from '../../hike';
 import Moment from "moment";
+
+import './style.css';
 
 class HikeCard extends Component {
 

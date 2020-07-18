@@ -1,6 +1,6 @@
 import React from 'react';
-import Results from '../../pages/results';
-import Navbar from '../navbar';
+import Results from '../results';
+import Navbar from '../../components/navbar';
 
 import './style.css'
 
