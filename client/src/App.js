@@ -11,7 +11,7 @@ import Dashboard from "./components/dashboard/dashboard";
 
 import Stats from './pages/stats';
 import Search from './pages/search';
-import FavoriteContainer from './components/favorites/favoriteContainer';
+import FavoriteContainer from './pages/favorites/favoriteContainer';
 import CompletedContainer from './components/completed/completedContainer';
 import 'materialize-css/dist/css/materialize.min.css';
 
