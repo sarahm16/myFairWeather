@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Button from '../components/button';
-import Label from '../componenets/label';
+import Label from '../components/label';
 
 class Login extends Component {
   constructor() {

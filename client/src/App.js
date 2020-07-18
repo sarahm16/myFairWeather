@@ -2,15 +2,15 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 // import Navbar from './components/navbar';
-import Register from './components/pages/register';
-import Login from './components/pages/login';
+import Register from './pages/register';
+import Login from './pages/login';
 import PrivateRoute from "./components/routes/privateRoute";
 
 
 import Dashboard from "./components/dashboard/dashboard";
 
-import Stats from './components/pages/stats';
-import Search from './components/pages/search';
+import Stats from './pages/stats';
+import Search from './pages/search';
 import FavoriteContainer from './components/favorites/favoriteContainer';
 import CompletedContainer from './components/completed/completedContainer';
 import 'materialize-css/dist/css/materialize.min.css';
