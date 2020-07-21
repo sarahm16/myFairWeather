@@ -15,7 +15,6 @@ import './styles.css';
 let zipcodes = require('zipcodes');
 
 class Search extends Component {
-
     constructor() {
         super();
             this.state = {
@@ -29,6 +28,7 @@ class Search extends Component {
                 longitude: 0,
                 zipcode: '',
                 hikes: [],
+                invalidZip: false,
                 isSubmitted: false
             };
             this.onSubmit=this.onSubmit.bind(this);     
@@ -50,8 +50,6 @@ class Search extends Component {
             console.log("Current location is Not Available");
           }
           navigator.geolocation.getCurrentPosition((position) => {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
             this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude})
           });
     }
@@ -74,6 +72,8 @@ class Search extends Component {
 
         if(this.state.zipcode !== '') {
             if(zipcodes.lookup(this.state.zipcode)) {
+                // console.log('zip')
+                // console.log(zipcodes.lookup(this.state.zipcode))
                 this.setState({
                     latitude: zipcodes.lookup(this.state.zipcode).latitude,
                     longitude: zipcodes.lookup(this.state.zipcode).longitude
@@ -81,27 +81,26 @@ class Search extends Component {
             }
             //worry about this later
 
-            // else {
-            //     console.log('invalid zip')
-            //     this.setState({
-            //         invalidZip: true,
-            //         page: 'invalid zip',
-            //         loading: false
-            //     })
-            // }
+            else {
+                console.log('invalid zip')
+                this.setState({invalidZip: true})
+                // this.setState({
+                //     invalidZip: true,
+                //     page: 'invalid zip',
+                //     loading: false
+                // })
+            }
         }
         API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
             .then(res => {
                 if(this.state.maxElevation !== null){
                     const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-                    let filtered = filteredHikes;
                     this.setState({
                         isSubmitted: true,
-                        trails: filtered
+                        trails: filteredHikes
                     })
                 }
                 else {
-                    //display first 5 results
                     let unfiltered = res.data.trails;
                     this.setState({
                         isSubmitted: true,
@@ -208,6 +207,7 @@ class Search extends Component {
                         {this.state.isSubmitted && <div><Results
                             type='search-results'
                             trails={this.state.trails}
+                            invalidZip={this.state.invalidZip}
                             />
                             </div>}
                     </div>

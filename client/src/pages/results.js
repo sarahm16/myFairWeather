@@ -19,6 +19,14 @@ class Results extends Component  {
     }
 
     componentDidMount() {
+        if(this.props.invalidZip) {
+            this.setState({
+                invalidZip: true,
+                page: 'invalid zip',
+                loading: false
+            }
+        )}
+
         //this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
 

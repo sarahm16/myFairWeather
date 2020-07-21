@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import './modal.css';
 
@@ -24,7 +23,6 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
                 <button className="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</button>
               </div>
               <div className='col m2 l2'></div>
-
             </div>
         </form>
     </div>

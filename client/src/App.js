@@ -1,8 +1,10 @@
+//packages
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import PrivateRoute from "./components/routes/privateRoute";
+import PrivateRoute from "./routes/privateRoute";
 
+//local imports
 import Register from './pages/register';
 import Login from './pages/login';
 import Dashboard from "./components/dashboard/dashboard";

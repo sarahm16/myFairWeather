@@ -19,16 +19,35 @@ class HikeCard extends Component {
             bestDay: [],
             showModal: false,
             userComment: ""
-            
         }
     }
+
+    componentDidMount() {
+        let mountainRating = '<div>';
+        let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
+        //console.log(ratings.indexOf(this.props.difficulty))
+        let mountain = '<i className="small material-icons icon-yellow">terrain</i>'
+        //let newString = mountainRating.concat(mountain);
+        //console.log(newString);
+        //mountainRating.concat(mountain);
+        //console.log(mountain);
+        for(let i=0; i<ratings.indexOf(this.props.difficulty); i++) {
+            mountainRating = mountainRating.concat(mountain)
+        }
+        //console.log(JSON.parse(mountainRating));
+    }
+
+    calculateDifficulty = () => {
+        let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
+    }
+
     toggleModal = () => {
         this.setState({
           showModal: !this.state.showModal
         });
-      }
+    }
 
-      onChange = event => {
+    onChange = event => {
         this.setState({ userComment: event.target.value })
     }
 
@@ -40,7 +59,7 @@ class HikeCard extends Component {
                 API.addFavorite(this.props);
                 break;
             case "Mark-complete":
-                    this.toggleModal()
+                this.toggleModal()
                 break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id, this.props.auth.user.id)
@@ -50,8 +69,7 @@ class HikeCard extends Component {
                 let forecastData =[]
                 API.getWeather(this.props)
                 .then(res =>{
-                    for ( let i = 4; i < 40; i=i+8)
-                    {
+                    for ( let i = 4; i < 40; i=i+8) {
                         forecastData.push(res.data.list[i]);
                     }
                     this.setState({forecast: forecastData});
@@ -83,25 +101,20 @@ class HikeCard extends Component {
                 .catch(function (error) {
                         console.log(error);
                 })   
-               
-                
                 break;
             case 'Less-Info':
                 this.setState({show_more: false});
                 break;
             case 'submit-complete':
-                    console.log(this.props)
                     let completedHike = [this.props];
-                     console.log(completedHike)
-                     completedHike.push({'userComment': this.state.userComment, 'Date': null})
+                    completedHike.push({'userComment': this.state.userComment, 'Date': null})
                     this.toggleModal();
                 API.addComplete(completedHike)
                 break;
             case 'delete-completed':
-                console.log(this.props.day)
                 API.deleteCompleted(this.props.day, this.props.userComment);
                 window.location.reload(false)
-                    break;
+                break;
             case 'cancel-submit':
                 this.toggleModal();
                 break;
@@ -114,17 +127,16 @@ class HikeCard extends Component {
 render () {
     return (
         <div className="row">
-             <Modal
-          show={this.state.showModal}
-          closeCallback={(e) => this.handleClick(e)}
-          cancelCallback={(e) => this.handleClick(e)}
-          onChangeCallback={(e) => this.onChange(e)}
-          customClass="custom_modal_class"
-          commentText={this.state.userComment}
-        ></Modal>
+            <Modal
+                show={this.state.showModal}
+                closeCallback={(e) => this.handleClick(e)}
+                cancelCallback={(e) => this.handleClick(e)}
+                onChangeCallback={(e) => this.onChange(e)}
+                customClass="custom_modal_class"
+                commentText={this.state.userComment}
+            />
             <div className="col s12 m12 l12">
                 <div className="card hoverable border">
-                    <a>
                         <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
                         {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                         {this.props.type !=='completed-hikes' && <div className='location'>
@@ -182,9 +194,6 @@ render () {
                                 <i className="small material-icons icon-yellow">terrain</i>
                                 </div>}
                                 
-                            
-                                
-                                
                                 {/* {this.props.difficulty} */}
                                 <div className='row'>
                                     <div className='col s12 m12 l12'>
@@ -193,8 +202,6 @@ render () {
                                 </div>
                             </div>
                         </div>
-                    </a>
-
                     
                     {this.state.show_more && <Hike
                         forecast = {this.state.forecast}
@@ -203,15 +210,15 @@ render () {
                         
                     />}
                     <div className="card-action no-padding">
-                            {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
+                        {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
 
-                            {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Complete <i className="small material-icons icon-green">check</i></button>}
+                        {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Complete <i className="small material-icons icon-green">check</i></button>}
 
-                            {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
-                            {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
-                            {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
-                            {this.state.show_more && <button id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
+                        {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>Show More<i className="small material-icons icon-black">expand_more</i></button>}
+                        {this.state.show_more && <button id="Less-Info" onClick={(e) => this.handleClick(e)}>Show Less<i className="small material-icons icon-white">expand_less</i></button>}
                     </div>
                 </div>
             </div>
