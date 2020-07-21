@@ -30,7 +30,8 @@ class Search extends Component {
                 zipcode: '',
                 hikes: [],
                 invalidZip: false,
-                isSubmitted: false
+                isSubmitted: false,
+                elevationOptions: [100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
             };
             this.onSubmit=this.onSubmit.bind(this);     
     }
@@ -90,24 +91,22 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-        if(this.state.zipcode !== '') {
-            if(zipcodes.lookup(this.state.zipcode)) {
+
+        let { zipcode } = this.state;
+
+        if(zipcode !== '') {
+            if(zipcodes.lookup(zipcode)) {
                 this.setState({
-                    latitude: zipcodes.lookup(this.state.zipcode).latitude,
-                    longitude: zipcodes.lookup(this.state.zipcode).longitude
+                    latitude: zipcodes.lookup(zipcode).latitude,
+                    longitude: zipcodes.lookup(zipcode).longitude
                 })
                 this.searchHikes();
             }
-
-            else {
-                console.log('invalid zip')
-                this.setState({
-                    invalidZip: true
-                })
-            }
+            else {this.setState({invalidZip: true})}
         }
         //search using latitude and longitude if zipcode is blank
-        else {this.searchHikes()}              
+        else{this.searchHikes()}
+        //this.state.invalidZip === false ? this.searchHikes() : console.log('invalid zip no search');     
     }
 
     render() {
@@ -160,17 +159,9 @@ class Search extends Component {
                                 id="maxElevation">
                                 >
                                     <option value="">Select Max Elevation Gain</option>
-                                    <option value="100">100 ft</option>
-                                    <option value="1000">1000 ft</option>
-                                    <option value="2000">2000 ft</option>
-                                    <option value="3000">3000 ft</option>
-                                    <option value="4000">4000 ft</option>
-                                    <option value="5000">5000 ft</option>
-                                    <option value="6000">6000 ft</option>
-                                    <option value="7000">7000 ft</option>
-                                    <option value="8000">8000 ft</option>
-                                    <option value="9000">9000 ft</option>
-                                    <option value="10000">10000 ft</option>
+                                    {this.state.elevationOptions.map(option => {
+                                        return(<option value={option}>{option} ft</option>)
+                                    })}
                                 </select>
                             </div>
                             <div className='col s4 sort-buttons'>Sort by:</div>  

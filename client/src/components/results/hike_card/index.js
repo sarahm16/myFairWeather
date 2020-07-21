@@ -166,7 +166,6 @@ render () {
                         forecast = {this.state.forecast}
                         bestDay = {this.state.bestDay}
                         summary ={this.props.summary}
-                        
                     />}
                     <div className="card-action no-padding">
                         {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
