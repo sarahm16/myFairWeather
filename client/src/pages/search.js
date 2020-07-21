@@ -67,47 +67,48 @@ class Search extends Component {
         })
     }
 
+    searchHikes = () => {
+        API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
+        .then(res => {
+            if(this.state.maxElevation !== null){
+                const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
+                this.setState({
+                    isSubmitted: true,
+                    trails: filteredHikes
+                })
+            }
+            else {
+                let unfiltered = res.data.trails;
+                this.setState({
+                    isSubmitted: true,
+                    trails: unfiltered
+                })
+            }
+        })  
+    }
+
     onSubmit(event) {
         event.preventDefault();
 
         if(this.state.zipcode !== '') {
             if(zipcodes.lookup(this.state.zipcode)) {
-                // console.log('zip')
-                // console.log(zipcodes.lookup(this.state.zipcode))
                 this.setState({
                     latitude: zipcodes.lookup(this.state.zipcode).latitude,
                     longitude: zipcodes.lookup(this.state.zipcode).longitude
                 })
+                this.searchHikes();
             }
-            //worry about this later
 
             else {
                 console.log('invalid zip')
-                this.setState({invalidZip: true})
-                // this.setState({
-                //     invalidZip: true,
-                //     page: 'invalid zip',
-                //     loading: false
-                // })
+                this.setState({
+                    invalidZip: true
+                })
             }
         }
-        API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
-            .then(res => {
-                if(this.state.maxElevation !== null){
-                    const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-                    this.setState({
-                        isSubmitted: true,
-                        trails: filteredHikes
-                    })
-                }
-                else {
-                    let unfiltered = res.data.trails;
-                    this.setState({
-                        isSubmitted: true,
-                        trails: unfiltered
-                    })
-                }
-            })        
+        //search using latitude and longitude if zipcode is blank
+        else {this.searchHikes()}
+              
     }
 
     render() {
