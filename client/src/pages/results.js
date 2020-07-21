@@ -108,12 +108,3 @@ Results.propTypes = {
   export default connect(
     mapStateToProps
   )(Results);
-
-
-
-  //make api call from search component
-  //set state of search component to 50 results
-  //send in first 5 to results component
-  //set state of results to props
-  //create next page button
-  //on click send next 5 results

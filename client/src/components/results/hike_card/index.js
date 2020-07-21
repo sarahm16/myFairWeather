@@ -18,27 +18,15 @@ class HikeCard extends Component {
             forecast: [],
             bestDay: [],
             showModal: false,
-            userComment: ""
+            userComment: "",
+            difficulty: []
         }
     }
 
     componentDidMount() {
-        let mountainRating = '<div>';
         let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
-        //console.log(ratings.indexOf(this.props.difficulty))
-        let mountain = '<i className="small material-icons icon-yellow">terrain</i>'
-        //let newString = mountainRating.concat(mountain);
-        //console.log(newString);
-        //mountainRating.concat(mountain);
-        //console.log(mountain);
-        for(let i=0; i<ratings.indexOf(this.props.difficulty); i++) {
-            mountainRating = mountainRating.concat(mountain)
-        }
-        //console.log(JSON.parse(mountainRating));
-    }
-
-    calculateDifficulty = () => {
-        let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
+        let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
+        this.setState({difficulty: difficulty})
     }
 
     toggleModal = () => {
@@ -142,14 +130,12 @@ render () {
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                             </div>}
-                            {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt = "hike"/>}
+                            {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt="hike"/>}
                             {this.props.imgMedium === '' && 
                             <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
                             <div className='hike-name'>
                                 <h6 className="card-title bg">{this.props.name}</h6>
                             </div>
-                            {/* <br />
-                            {this.props.location} */}
                         </div>
                         <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
                             <div className = "info-text">
@@ -158,43 +144,16 @@ render () {
                                     Elevation gain: {this.props.ascent} ft
                                 </div>
 
-                                {this.props.difficulty === 'green' &&
-                                <div className="col s6">Difficulty: <br />
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                </div>}
-
-                                {this.props.difficulty === 'greenBlue' &&
-                                <div className="col s6">Difficulty: <br />
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                </div>}
-
-                                {this.props.difficulty === 'blue' &&
-                                <div className="col s6">Difficulty: <br />
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                </div>}
-
-                                {this.props.difficulty === 'blueBlack' &&
-                                <div className="col s6">Difficulty: <br />
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                </div>}
-
-                                {this.props.difficulty === 'black' &&
-                                <div className="col s6">Difficulty: <br />
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                <i className="small material-icons icon-yellow">terrain</i>
-                                </div>}
+                                <div className='col s6'>
+                                    Diffuculty: 
+                                    <br />
+                                    {this.state.difficulty.map(mountain => {
+                                        return(
+                                            <i className="small material-icons icon-yellow">terrain</i>
+                                        )
+                                    })}
+                                </div>
                                 
-                                {/* {this.props.difficulty} */}
                                 <div className='row'>
                                     <div className='col s12 m12 l12'>
                                         {this.props.type =='completed-hikes' && <p className='report'>Report: {this.props.userComment}</p>}
