@@ -89,7 +89,7 @@ class Results extends Component  {
                     day={trail.day}
                     />
                 })}
-                <button onClick={this.nextPage}>Next Page</button>
+                <button className='load-more btn waves-effect waves-light hoverable blue accent-3' onClick={this.nextPage}>Load More Hikes</button>
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>

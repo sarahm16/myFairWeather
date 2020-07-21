@@ -145,12 +145,6 @@ class Search extends Component {
                                 value={this.state.maxTravel}
                                 id="maxTravel">
                                     <option value="">Select Max Distance to Trailhead</option>
-                                    {/* <option value= "5" >5 miles</option>
-                                    <option value="10">10 miles</option>
-                                    <option value="15">15 miles</option>
-                                    <option value="25">25 miles</option>
-                                    <option value="50">50 miles</option>
-                                    <option value="100">100 miles</option> */}
                                     {this.state.distanceOptions.map(distance => {
                                         return(<option value={`${distance}`}>{distance} miles</option>)
                                     })}
@@ -169,17 +163,17 @@ class Search extends Component {
                                 </select>
                             </div>
                             <div className='col s4 sort-buttons'>Sort by:</div>  
-                                <div className='col s4 sort-buttons'>
-                                    <label>
-                                        <input 
-                                        onChange={this.onChange} 
-                                        value='distance'
-                                        id='sort' className="with-gap" 
-                                        name="group1" type="radio" 
-                                        checked={this.state.sort === 'distance'}  />
-                                        <span>Distance</span>
-                                    </label>
-                                </div>
+                            <div className='col s4 sort-buttons'>
+                                <label>
+                                    <input 
+                                    onChange={this.onChange} 
+                                    value='distance'
+                                    id='sort' className="with-gap" 
+                                    name="group1" type="radio" 
+                                    checked={this.state.sort === 'distance'}  />
+                                    <span>Distance</span>
+                                </label>
+                            </div>
                             <div className='col s4 sort-buttons'>
                                 <label>
                                     <input 

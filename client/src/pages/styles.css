@@ -3,6 +3,13 @@
     margin: 0 auto
 } */
 
+.load-more {
+    width: 96%;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
 .search {
     margin: 0 auto;
 }
