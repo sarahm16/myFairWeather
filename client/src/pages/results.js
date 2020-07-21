@@ -13,20 +13,11 @@ class Results extends Component  {
             noTrails: false,
             loading: true,
             page: '',
-            invalidZip: false,
             pageNumber: 1
         }
     }
 
     componentDidMount() {
-        if(this.props.invalidZip) {
-            this.setState({
-                invalidZip: true,
-                page: 'invalid zip',
-                loading: false
-            }
-        )}
-
         //this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
 
@@ -43,7 +34,7 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                useResults(this.props.trails, 'search-results')
+                useResults(this.props.trails, 'search-results');
             break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
@@ -101,7 +92,6 @@ class Results extends Component  {
                 <button onClick={this.nextPage}>Next Page</button>
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
-                {this.state.invalidZip && <Alert page={this.state.page}/>}
             </div>
         )
     }

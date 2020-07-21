@@ -6,6 +6,7 @@ import Button from '../components/button';
 import Label from '../components/label';
 import Results from './results';
 import Navbar from '../components/navbar';
+import Alert from '../components/alert';
 import API from '../utils/API';
 
 import M from 'materialize-css';
@@ -89,7 +90,6 @@ class Search extends Component {
 
     onSubmit(event) {
         event.preventDefault();
-
         if(this.state.zipcode !== '') {
             if(zipcodes.lookup(this.state.zipcode)) {
                 this.setState({
@@ -107,8 +107,7 @@ class Search extends Component {
             }
         }
         //search using latitude and longitude if zipcode is blank
-        else {this.searchHikes()}
-              
+        else {this.searchHikes()}              
     }
 
     render() {
@@ -210,7 +209,8 @@ class Search extends Component {
                             trails={this.state.trails}
                             invalidZip={this.state.invalidZip}
                             />
-                            </div>}
+                        </div>}
+                        {this.state.invalidZip && <Alert page='invalid zip'/>}
                     </div>
                 </div>
             </div>
