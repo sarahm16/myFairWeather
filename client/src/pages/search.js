@@ -31,7 +31,8 @@ class Search extends Component {
                 hikes: [],
                 invalidZip: false,
                 isSubmitted: false,
-                elevationOptions: [100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+                elevationOptions: [100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+                distanceOptions: [5, 10, 15, 25, 50, 100]
             };
             this.onSubmit=this.onSubmit.bind(this);     
     }
@@ -144,12 +145,15 @@ class Search extends Component {
                                 value={this.state.maxTravel}
                                 id="maxTravel">
                                     <option value="">Select Max Distance to Trailhead</option>
-                                    <option value= "5" >5 miles</option>
+                                    {/* <option value= "5" >5 miles</option>
                                     <option value="10">10 miles</option>
                                     <option value="15">15 miles</option>
                                     <option value="25">25 miles</option>
                                     <option value="50">50 miles</option>
-                                    <option value="100">100 miles</option>
+                                    <option value="100">100 miles</option> */}
+                                    {this.state.distanceOptions.map(distance => {
+                                        return(<option value={`${distance}`}>{distance} miles</option>)
+                                    })}
                                 </select>
                             </div>
                             <div className="input-field col s12">
@@ -160,7 +164,7 @@ class Search extends Component {
                                 >
                                     <option value="">Select Max Elevation Gain</option>
                                     {this.state.elevationOptions.map(option => {
-                                        return(<option value={option}>{option} ft</option>)
+                                        return(<option value={`${option}`}>{option} ft</option>)
                                     })}
                                 </select>
                             </div>
