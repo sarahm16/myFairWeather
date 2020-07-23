@@ -20,20 +20,31 @@ class HikeCard extends Component {
             showModal: false,
             userComment: '',
             userImage: '',
-            difficulty: []        }
+            difficulty: [],
+            imageArray: [],
+            imageNumber: 0
+        }
     }
 
     componentDidMount() {
         let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
         let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
-        this.setState({difficulty: difficulty})
-        console.log(this.props.userImage)
+        this.setState({
+            difficulty: difficulty,
+            imageArray: [this.props.imgMedium, this.props.userImage]
+        })
     }
 
     toggleModal = () => {
         this.setState({
           showModal: !this.state.showModal
         });
+    }
+
+    nextImage = () => {
+        let nextImage = this.state.imageNumber + 1;
+        this.setState({imageNumber: nextImage});
+        console.log(this.state.imageNumber)
     }
 
     selectPhoto = (e) => {
@@ -56,6 +67,7 @@ class HikeCard extends Component {
 
     handleClick = event => {
         event.preventDefault();
+        console.log(event.currentTarget.id)
         switch (event.currentTarget.id) {
             case "Add-to-favs":
                 console.log(this.props)
@@ -121,6 +133,9 @@ class HikeCard extends Component {
             case 'cancel-submit':
                 this.toggleModal();
                 break;
+            case 'next-image':
+                this.nextImage();
+                break;
             default:
                 console.log(event.currentTarget);
                 break;
@@ -141,21 +156,22 @@ render () {
             />
             <div className="col s12 m12 l12">
                 <div className="card hoverable border">
-                        <div className="card-image" id="to-index-page" onClick={(e) => this.handleClick(e)}>
+                        <div className="card-image">
                         {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                             </div>}
-                            {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt="hike"/>}
-                            {this.props.userImage !== undefined && <img src={this.props.userImage} alt="user uploaded"/>}
-                            {this.props.imgMedium === '' && 
-                            <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
-                            <div className='hike-name'>
-                                <h6 className="card-title bg">{this.props.name}</h6>
-                            </div>
+                                {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
+                                {/* {this.props.userImage !== undefined && <img src={this.props.userImage} alt="user uploaded"/>} */}
+                                {this.props.imgMedium === '' && 
+                                <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
+                                <div className='hike-name'>
+                                    <h6 className="card-title bg">{this.props.name}</h6>
+                                </div>
                         </div>
-                        <div className="card-content" id="to-index-page"onClick={(e) => this.handleClick(e)}>
+                        <div className="card-content">
                             <div className = "info-text">
+                                <button onClick={this.nextImage}>Next Image</button>
                                 <div className="col s6 m6 l6">Length: {this.props.length} miles
                                     <br />
                                     Elevation gain: {this.props.ascent} ft

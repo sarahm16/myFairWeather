@@ -9,6 +9,10 @@
     padding: 5px;
 }
 
+#next-image {
+    z-index: 20;
+}
+
 .location {
     width: 30%;
     position: absolute;
