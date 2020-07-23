@@ -149,7 +149,7 @@ render () {
                                     <br />
                                     {this.state.difficulty.map(mountain => {
                                         return(
-                                            <i className="small material-icons icon-yellow">terrain</i>
+                                            <i className="small material-icons icon-yellow" key={Math.random(10)}>terrain</i>
                                         )
                                     })}
                                 </div>

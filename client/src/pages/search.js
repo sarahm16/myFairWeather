@@ -146,7 +146,7 @@ class Search extends Component {
                                 id="maxTravel">
                                     <option value="">Select Max Distance to Trailhead</option>
                                     {this.state.distanceOptions.map(distance => {
-                                        return(<option value={`${distance}`}>{distance} miles</option>)
+                                        return(<option value={`${distance}`} key={distance}>{distance} miles</option>)
                                     })}
                                 </select>
                             </div>
@@ -158,7 +158,7 @@ class Search extends Component {
                                 >
                                     <option value="">Select Max Elevation Gain</option>
                                     {this.state.elevationOptions.map(option => {
-                                        return(<option value={`${option}`}>{option} ft</option>)
+                                        return(<option value={`${option}`} key={option}>{option} ft</option>)
                                     })}
                                 </select>
                             </div>
