@@ -35,7 +35,19 @@ class HikeCard extends Component {
         });
     }
 
+    selectPhoto = (e) => {
+        e.preventDefault();
+        window.cloudinary.openUploadWidget({
+            cloudName: 'sarahm16', 
+            uploadPreset: 'gvezom1v'}, (error, result) => { 
+            if (!error && result && result.event === "success") { 
+              console.log('Done! Here is the image info: ', result.info); 
+            }
+        })
+    }
+
     onChange = event => {
+        console.log(event.target.value)
         this.setState({ userComment: event.target.value })
     }
 
@@ -120,6 +132,7 @@ render () {
                 closeCallback={(e) => this.handleClick(e)}
                 cancelCallback={(e) => this.handleClick(e)}
                 onChangeCallback={(e) => this.onChange(e)}
+                selectPhotoCallback={(e) => this.selectPhoto(e)}
                 customClass="custom_modal_class"
                 commentText={this.state.userComment}
             />
