@@ -27,6 +27,7 @@ class HikeCard extends Component {
         let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
         let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
         this.setState({difficulty: difficulty})
+        console.log(this.props.userImage)
     }
 
     toggleModal = () => {
@@ -53,7 +54,7 @@ class HikeCard extends Component {
         this.setState({ userComment: event.target.value })
     }
 
-     handleClick = event => {
+    handleClick = event => {
         event.preventDefault();
         switch (event.currentTarget.id) {
             case "Add-to-favs":
@@ -146,6 +147,7 @@ render () {
                                 <i className="material-icons">location_on</i> {this.props.location}
                             </div>}
                             {this.props.imgMedium !== '' && <img src={this.props.imgMedium} alt="hike"/>}
+                            {this.props.userImage !== undefined && <img src={this.props.userImage} alt="user uploaded"/>}
                             {this.props.imgMedium === '' && 
                             <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
                             <div className='hike-name'>

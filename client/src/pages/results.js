@@ -84,6 +84,7 @@ class Results extends Component  {
                     latitude ={trail.latitude}
                     longitude = {trail.longitude}
                     userComment = {trail.userComment}
+                    userImage = {trail.userImage}
                     high={trail.high}
                     ascent={trail.ascent}
                     imgMedium={trail.imgMedium}
