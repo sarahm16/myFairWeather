@@ -10,7 +10,6 @@ import Moment from "moment";
 import './style.css';
 
 class HikeCard extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -31,7 +30,7 @@ class HikeCard extends Component {
         let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
         this.setState({
             difficulty: difficulty,
-            imageArray: [this.props.imgMedium, this.props.userImage]
+            imageArray: [this.props.imgMedium, this.props.imgMedium, this.props.imgMedium, this.props.userImage]
         })
     }
 
@@ -44,6 +43,12 @@ class HikeCard extends Component {
     nextImage = () => {
         let nextImage = this.state.imageNumber + 1;
         this.setState({imageNumber: nextImage});
+        console.log(this.state.imageNumber)
+    }
+
+    prevImage = () => {
+        let prevImage = this.state.imageNumber - 1;
+        this.setState({imageNumber: prevImage});
         console.log(this.state.imageNumber)
     }
 
@@ -161,6 +166,9 @@ render () {
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                             </div>}
+                                <div><button className='next' onClick={this.nextImage}><i className="material-icons">keyboard_arrow_right</i></button>
+                                <button className='prev' onClick={this.prevImage}><i className="material-icons">keyboard_arrow_left</i></button></div>
+
                                 {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
                                 {/* {this.props.userImage !== undefined && <img src={this.props.userImage} alt="user uploaded"/>} */}
                                 {this.props.imgMedium === '' && 
@@ -169,9 +177,17 @@ render () {
                                     <h6 className="card-title bg">{this.props.name}</h6>
                                 </div>
                         </div>
+                        <ul className="pagination">
+                            <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
+                            {/* //if index of image = image number then its active */}
+                            {this.state.imageArray.map((image, index) => {
+                                console.log(index)
+                                return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className='material-icons'>fiber_manual_record</i></a></li>)
+                            })}
+                            <li className="waves-effect"><button id='next' onClick={this.nextImage}><i className="material-icons">chevron_right</i></button></li>
+                        </ul>
                         <div className="card-content">
-                            <div className = "info-text">
-                                <button onClick={this.nextImage}>Next Image</button>
+                            <div className = "info-text">                           
                                 <div className="col s6 m6 l6">Length: {this.props.length} miles
                                     <br />
                                     Elevation gain: {this.props.ascent} ft

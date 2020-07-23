@@ -9,8 +9,29 @@
     padding: 5px;
 }
 
-#next-image {
-    z-index: 20;
+/* .next {
+    position: relative;
+    top: 120px;
+    z-index: 10;
+    text-align: right;
+}
+
+.prev {
+    position: relative;
+    top: 120px;
+    z-index: 10;
+    text-align: left;
+} */
+
+#prev,
+#next {
+    background-color: white;
+    border: none
+
+}
+
+.card {
+    position: absolute
 }
 
 .location {
