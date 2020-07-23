@@ -133,7 +133,7 @@ router.post('/favorite', function(req,res) {
 })
 
 router.post('/completed', function(req,res) {
-  // console.log(req.body)
+  //console.log(req.body)
   Completed.create({
     userID: req.body[0].auth.user.id,
     id: req.body[0].id,
@@ -148,7 +148,8 @@ router.post('/completed', function(req,res) {
     ascent: req.body[0].ascent,
     length: req.body[0].length,
     location: req.body[0].location,
-    userComment: req.body[1].userComment
+    userComment: req.body[1].userComment,
+    userImage: req.body[1].userImage
   }).then(dbCompleted => {
     console.log(dbCompleted)
     res.json(dbCompleted)
@@ -161,7 +162,7 @@ router.get('/completed/:id', function(req, res) {
   //console.log('id: ' + req.params.id)
   Completed.find({userID: req.params.id})
     .then(completed => {
-      console.log(completed)
+      //console.log(completed)
       res.json(completed)
     })
 })

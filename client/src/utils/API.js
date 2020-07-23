@@ -53,6 +53,7 @@ export default {
     },
 
     addComplete: function(hike) {
+        //console.log(hike)
         axios({
             url: 'api/users/completed', 
             method: 'post',

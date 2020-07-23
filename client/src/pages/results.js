@@ -46,7 +46,9 @@ class Results extends Component  {
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
-                    .then(res => {useResults(res.data, 'completed');
+                    .then(res => {
+                        console.log(res.data);
+                        useResults(res.data, 'completed');
                 })
                 break;       
             default:

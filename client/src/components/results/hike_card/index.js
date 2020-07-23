@@ -18,9 +18,9 @@ class HikeCard extends Component {
             forecast: [],
             bestDay: [],
             showModal: false,
-            userComment: "",
-            difficulty: []
-        }
+            userComment: '',
+            userImage: '',
+            difficulty: []        }
     }
 
     componentDidMount() {
@@ -41,7 +41,9 @@ class HikeCard extends Component {
             cloudName: 'sarahm16', 
             uploadPreset: 'gvezom1v'}, (error, result) => { 
             if (!error && result && result.event === "success") { 
-              console.log('Done! Here is the image info: ', result.info); 
+              console.log('Done! Here is the image info: ', result.info);
+              console.log(result.info.url) 
+              this.setState({userImage: result.info.url})
             }
         })
     }
@@ -107,7 +109,7 @@ class HikeCard extends Component {
                 break;
             case 'submit-complete':
                     let completedHike = [this.props];
-                    completedHike.push({'userComment': this.state.userComment, 'Date': null})
+                    completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
                     this.toggleModal();
                 API.addComplete(completedHike)
                 break;

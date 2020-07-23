@@ -39,6 +39,9 @@ const CompletedSchema = new Schema({
     userComment: {
         type: String
     },
+    userImage: {
+        type: String
+    },
     latitude: {
         type: Number
     },
