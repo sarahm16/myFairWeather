@@ -166,11 +166,9 @@ render () {
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                             </div>}
-                                <div><button className='next' onClick={this.nextImage}><i className="material-icons">keyboard_arrow_right</i></button>
-                                <button className='prev' onClick={this.prevImage}><i className="material-icons">keyboard_arrow_left</i></button></div>
-
+                                {/* <div><button className='next' onClick={this.nextImage}><i className="material-icons">keyboard_arrow_right</i></button> */}
+                                {/* <button className='prev' onClick={this.prevImage}><i className="material-icons">keyboard_arrow_left</i></button></div> */}
                                 {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
-                                {/* {this.props.userImage !== undefined && <img src={this.props.userImage} alt="user uploaded"/>} */}
                                 {this.props.imgMedium === '' && 
                                 <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
                                 <div className='hike-name'>
@@ -179,11 +177,9 @@ render () {
                         </div>
                         <ul className="pagination">
                             <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
-                            {/* //if index of image = image number then its active */}
-                            {this.state.imageArray.map((image, index) => {
-                                console.log(index)
-                                return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className='material-icons'>fiber_manual_record</i></a></li>)
-                            })}
+                                {this.state.imageArray.map((image, index) => {
+                                    return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className='material-icons'>fiber_manual_record</i></a></li>)
+                                })}
                             <li className="waves-effect"><button id='next' onClick={this.nextImage}><i className="material-icons">chevron_right</i></button></li>
                         </ul>
                         <div className="card-content">
