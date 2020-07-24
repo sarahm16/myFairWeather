@@ -178,7 +178,7 @@ render () {
                         <ul className="pagination">
                             <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
                                 {this.state.imageArray.map((image, index) => {
-                                    return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className='material-icons'>fiber_manual_record</i></a></li>)
+                                    return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className={index == this.state.imageNumber ? 'material-icons material-icons-outlined' : 'material-icons'}>fiber_manual_record</i></a></li>)
                                 })}
                             <li className="waves-effect"><button id='next' onClick={this.nextImage}><i className="material-icons">chevron_right</i></button></li>
                         </ul>
