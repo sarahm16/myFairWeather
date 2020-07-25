@@ -82,80 +82,58 @@ class HikeCard extends Component {
         window.location.reload();
     }
 
-    handleClick = event => {
-        event.preventDefault();
-        console.log(event.currentTarget.id)
-        switch (event.currentTarget.id) {
-            // case "Add-to-favs":
-            //     console.log(this.props)
-            //     API.addFavorite(this.props);
-            //     break;
-            // case "Mark-complete":
-            //     this.toggleModal()
-            //     break;
-            // case 'delete-favorite':
-            //     API.deleteFavorite(this.props.id, this.props.auth.user.id)
-            //     window.location.reload()
-            //     break;
-            case "More-Info":
-                let forecastData =[]
-                API.getWeather(this.props)
-                .then(res =>{
-                    for ( let i = 4; i < 40; i=i+8) {
-                        forecastData.push(res.data.list[i]);
-                    }
-                    this.setState({forecast: forecastData});
-                    return;
-                }).then(() =>{
-                    let bestTemp = Weather.getBestDay(this.state.forecast);
-                    return bestTemp;
-                })
-                .then((bestTemp)=>{
-                    let bestWeather = Weather.bestWeather(bestTemp);
-                    return bestWeather;
-                })
-                .then((res)=>{
-                    let sorted = Weather.weatherSort(res);
-                    let bestWeather;
-                    if(sorted.constructor === Array){
-                        bestWeather = sorted;
-                    } else{
-                        bestWeather = [sorted];
-                    }
-                    this.setState({
-                        bestDay: bestWeather,
-                    })
-                    return;
-                }).then(()=>{
-                    this.setState({show_more: true});
-                    return;
-                })
-                .catch(function (error) {
-                        console.log(error);
-                })   
-                break;
-            case 'Less-Info':
-                this.setState({show_more: false});
-                break;
-            case 'submit-complete':
-                let completedHike = [this.props];
-                completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
-                console.log(completedHike)
-                this.toggleModal();
-                API.addComplete(completedHike)
-                break;
-            case 'delete-completed':
-                API.deleteCompleted(this.props.day, this.props.userComment);
-                window.location.reload(false)
-                break;
-            // case 'cancel-submit':
-            //     this.toggleModal();
-            //     break;
+    deleteCompleted = () => {
+        API.deleteCompleted(this.props.day, this.props.userComment);
+        window.location.reload(false);
+    }
 
-            default:
-                console.log(event.currentTarget);
-                break;
-        }
+    lessInfo = () => {
+        this.setState({show_more: false});
+    }
+
+    submitComplete = () => {
+        let completedHike = [this.props];
+        completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
+        this.toggleModal();
+        API.addComplete(completedHike)
+    }
+
+    moreInfo = () => {
+        let forecastData =[]
+        API.getWeather(this.props)
+        .then(res =>{
+            for ( let i = 4; i < 40; i=i+8) {
+                forecastData.push(res.data.list[i]);
+            }
+            this.setState({forecast: forecastData});
+            return;
+        }).then(() =>{
+            let bestTemp = Weather.getBestDay(this.state.forecast);
+            return bestTemp;
+        })
+        .then((bestTemp)=>{
+            let bestWeather = Weather.bestWeather(bestTemp);
+            return bestWeather;
+        })
+        .then((res)=>{
+            let sorted = Weather.weatherSort(res);
+            let bestWeather;
+            if(sorted.constructor === Array){
+                bestWeather = sorted;
+            } else{
+                bestWeather = [sorted];
+            }
+            this.setState({
+                bestDay: bestWeather,
+            })
+            return;
+        }).then(()=>{
+            this.setState({show_more: true});
+            return;
+        })
+        .catch(function (error) {
+                console.log(error);
+        })   
     }
     
 render () {
@@ -163,7 +141,7 @@ render () {
         <div className="row">
             <Modal
                 show={this.state.showModal}
-                closeCallback={(e) => this.handleClick(e)}
+                closeCallback={this.submitComplete}
                 cancelCallback={this.toggleModal}
                 onChangeCallback={(e) => this.onChange(e)}
                 selectPhotoCallback={(e) => this.selectPhoto(e)}
@@ -227,10 +205,10 @@ render () {
                         {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
 
                         {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={this.deleteFav}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
-                        {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={this.deleteCompleted}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
-                        {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>More Info<i className="small material-icons icon-black">expand_more</i></button>}
-                        {this.state.show_more && <button id="Less-Info" onClick={(e) => this.handleClick(e)}>Less Info<i className="small material-icons icon-white">expand_less</i></button>}
+                        {!this.state.show_more && <button id="More-Info" onClick={this.moreInfo}>More Info<i className="small material-icons icon-black">expand_more</i></button>}
+                        {this.state.show_more && <button id="Less-Info" onClick={this.lessInfo}>Less Info<i className="small material-icons icon-white">expand_less</i></button>}
                     </div>
                 </div>
             </div>
