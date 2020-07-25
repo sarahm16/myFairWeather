@@ -77,6 +77,11 @@ class HikeCard extends Component {
         API.addFavorite(this.props);
     }
 
+    deleteFav = () => {
+        API.deleteFavorite(this.props.id, this.props.auth.user.id);
+        window.location.reload();
+    }
+
     handleClick = event => {
         event.preventDefault();
         console.log(event.currentTarget.id)
@@ -88,10 +93,10 @@ class HikeCard extends Component {
             // case "Mark-complete":
             //     this.toggleModal()
             //     break;
-            case 'delete-favorite':
-                API.deleteFavorite(this.props.id, this.props.auth.user.id)
-                window.location.reload()
-                break;
+            // case 'delete-favorite':
+            //     API.deleteFavorite(this.props.id, this.props.auth.user.id)
+            //     window.location.reload()
+            //     break;
             case "More-Info":
                 let forecastData =[]
                 API.getWeather(this.props)
@@ -143,12 +148,10 @@ class HikeCard extends Component {
                 API.deleteCompleted(this.props.day, this.props.userComment);
                 window.location.reload(false)
                 break;
-            case 'cancel-submit':
-                this.toggleModal();
-                break;
-            case 'next-image':
-                this.nextImage();
-                break;
+            // case 'cancel-submit':
+            //     this.toggleModal();
+            //     break;
+
             default:
                 console.log(event.currentTarget);
                 break;
@@ -161,7 +164,7 @@ render () {
             <Modal
                 show={this.state.showModal}
                 closeCallback={(e) => this.handleClick(e)}
-                cancelCallback={(e) => this.handleClick(e)}
+                cancelCallback={this.toggleModal}
                 onChangeCallback={(e) => this.onChange(e)}
                 selectPhotoCallback={(e) => this.selectPhoto(e)}
                 customClass="custom_modal_class"
@@ -223,7 +226,7 @@ render () {
 
                         {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
 
-                        {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={this.deleteFav}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
                         {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
                         {!this.state.show_more && <button id="More-Info" onClick={(e) => this.handleClick(e)}>More Info<i className="small material-icons icon-black">expand_more</i></button>}
