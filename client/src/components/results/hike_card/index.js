@@ -72,18 +72,22 @@ class HikeCard extends Component {
         console.log(event.target.value)
         this.setState({ userComment: event.target.value })
     }
+    
+    addFav = () => {
+        API.addFavorite(this.props);
+    }
 
     handleClick = event => {
         event.preventDefault();
         console.log(event.currentTarget.id)
         switch (event.currentTarget.id) {
-            case "Add-to-favs":
-                console.log(this.props)
-                API.addFavorite(this.props);
-                break;
-            case "Mark-complete":
-                this.toggleModal()
-                break;
+            // case "Add-to-favs":
+            //     console.log(this.props)
+            //     API.addFavorite(this.props);
+            //     break;
+            // case "Mark-complete":
+            //     this.toggleModal()
+            //     break;
             case 'delete-favorite':
                 API.deleteFavorite(this.props.id, this.props.auth.user.id)
                 window.location.reload()
@@ -215,9 +219,9 @@ render () {
                         summary ={this.props.summary}
                     />}
                     <div className="card-action no-padding">
-                        {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" id="Add-to-favs" onClick={(e) => this.handleClick(e)}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
+                        {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" onClick={this.addFav}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
 
-                        {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" id="Mark-complete" onClick={(e) => this.handleClick(e)}>Complete <i className="small material-icons icon-green">check</i></button>}
+                        {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
 
                         {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
                         {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={(e) => this.handleClick(e)}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
