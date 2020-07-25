@@ -18,7 +18,7 @@ class HikeCard extends Component {
             bestDay: [],
             showModal: false,
             userComment: '',
-            userImage: '',
+            userImage: [],
             difficulty: [],
             imageArray: [],
             imageNumber: 0
@@ -26,11 +26,15 @@ class HikeCard extends Component {
     }
 
     componentDidMount() {
+        let imageArray = this.props.userImage;
+        this.props.type === 'completed-hikes' ? imageArray.unshift(this.props.imgMedium) : imageArray = [this.props.imgMedium];
+        
         let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
         let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
+        
         this.setState({
             difficulty: difficulty,
-            imageArray: [this.props.imgMedium, this.props.imgMedium, this.props.imgMedium, this.props.userImage]
+            imageArray: imageArray
         })
     }
 
@@ -43,24 +47,23 @@ class HikeCard extends Component {
     nextImage = () => {
         let nextImage = this.state.imageNumber + 1;
         this.setState({imageNumber: nextImage});
-        console.log(this.state.imageNumber)
     }
 
     prevImage = () => {
         let prevImage = this.state.imageNumber - 1;
         this.setState({imageNumber: prevImage});
-        console.log(this.state.imageNumber)
     }
 
     selectPhoto = (e) => {
+        let userImages = []
         e.preventDefault();
         window.cloudinary.openUploadWidget({
             cloudName: 'sarahm16', 
             uploadPreset: 'gvezom1v'}, (error, result) => { 
             if (!error && result && result.event === "success") { 
               console.log('Done! Here is the image info: ', result.info);
-              console.log(result.info.url) 
-              this.setState({userImage: result.info.url})
+              userImages.push(result.info.url) 
+              this.setState({userImage: userImages})
             }
         })
     }
@@ -126,9 +129,10 @@ class HikeCard extends Component {
                 this.setState({show_more: false});
                 break;
             case 'submit-complete':
-                    let completedHike = [this.props];
-                    completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
-                    this.toggleModal();
+                let completedHike = [this.props];
+                completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
+                console.log(completedHike)
+                this.toggleModal();
                 API.addComplete(completedHike)
                 break;
             case 'delete-completed':
@@ -165,23 +169,21 @@ render () {
                         {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
-                            </div>}
-                                {/* <div><button className='next' onClick={this.nextImage}><i className="material-icons">keyboard_arrow_right</i></button> */}
-                                {/* <button className='prev' onClick={this.prevImage}><i className="material-icons">keyboard_arrow_left</i></button></div> */}
-                                {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
-                                {this.props.imgMedium === '' && 
-                                <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
-                                <div className='hike-name'>
-                                    <h6 className="card-title bg">{this.props.name}</h6>
-                                </div>
+                        </div>}
+                            {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
+                            {this.props.imgMedium === '' && 
+                            <img src='https://live.staticflickr.com/7252/27996230286_73a0ed8a4d_b.jpg' alt = "hike"/>}
+                            <div className='hike-name'>
+                                <h6 className="card-title bg">{this.props.name}</h6>
+                            </div>
                         </div>
-                        <ul className="pagination">
+                        {this.props.type === 'completed-hikes' && <ul className="pagination">
                             <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
                                 {this.state.imageArray.map((image, index) => {
                                     return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className={index == this.state.imageNumber ? 'material-icons material-icons-outlined' : 'material-icons'}>fiber_manual_record</i></a></li>)
                                 })}
                             <li className="waves-effect"><button id='next' onClick={this.nextImage}><i className="material-icons">chevron_right</i></button></li>
-                        </ul>
+                        </ul>}
                         <div className="card-content">
                             <div className = "info-text">                           
                                 <div className="col s6 m6 l6">Length: {this.props.length} miles
