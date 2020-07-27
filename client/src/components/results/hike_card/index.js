@@ -45,13 +45,19 @@ class HikeCard extends Component {
     }
 
     nextImage = () => {
-        let nextImage = this.state.imageNumber + 1;
-        this.setState({imageNumber: nextImage});
+        let { imageNumber, imageArray } = this.state;
+        if (imageNumber < imageArray.length -1 ) {
+            let nextImage = imageNumber + 1;
+            this.setState({imageNumber: nextImage});
+        }
     }
 
     prevImage = () => {
-        let prevImage = this.state.imageNumber - 1;
-        this.setState({imageNumber: prevImage});
+        let { imageNumber } = this.state;
+        if (imageNumber > 0) {
+            let prevImage = imageNumber - 1;
+            this.setState({imageNumber: prevImage});
+        }
     }
 
     selectPhoto = (e) => {
