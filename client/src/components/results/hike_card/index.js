@@ -82,7 +82,8 @@ class HikeCard extends Component {
         window.location.reload();
     }
 
-    deleteCompleted = () => {
+    deleteCompleted = (event) => {
+        event.preventDefault();
         API.deleteCompleted(this.props.day, this.props.userComment);
         window.location.reload(false);
     }
@@ -91,7 +92,8 @@ class HikeCard extends Component {
         this.setState({show_more: false});
     }
 
-    submitComplete = () => {
+    submitComplete = (event) => {
+        event.preventDefault();
         let completedHike = [this.props];
         completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
         this.toggleModal();
