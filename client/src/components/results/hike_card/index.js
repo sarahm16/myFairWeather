@@ -6,6 +6,7 @@ import Weather from '../../../utils/weather';
 import Modal from '../../../pages/completed/modal';
 import Hike from '../../hike';
 import Moment from "moment";
+import Timer from '../../timer/timer';
 
 import './style.css';
 
@@ -202,11 +203,14 @@ render () {
                             </div>
                         </div>
                     
-                    {this.state.show_more && <Hike
+                    {this.state.show_more &&
+                     <Hike
                         forecast = {this.state.forecast}
                         bestDay = {this.state.bestDay}
                         summary ={this.props.summary}
-                    />}
+                    />
+                    //<Timer />
+                    }
                     <div className="card-action no-padding">
                         {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" onClick={this.addFav}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
 
