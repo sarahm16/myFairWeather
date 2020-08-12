@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import API from '../../../utils/API';
 import Weather from '../../../utils/weather';
 import Modal from '../../../pages/completed/modal';
-import Hike from '../../hike';
+import Hike from '../index';
 import Moment from "moment";
 import Timer from '../../timer/timer';
 
