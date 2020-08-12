@@ -5,12 +5,15 @@ An app designed for hikers to search for hikes based on mileage, distance to tra
 ## Technologies
 
 * React.js
-* Moment.js
+* Node.js
 * MongoDB
 * API
 * Redux
 * Express
+* Moment.js
+* Materialize CSS
 * Zipcodes.js
+* Cloudinary
 
 ## How to use
 

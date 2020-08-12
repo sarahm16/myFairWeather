@@ -10,20 +10,20 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
         <form className="journalEntry">
             <label className="inputBox">
                 Trip Report
-                <input className="inputText" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
+                <textarea className="inputText" type="text" name="commentBox" id="commentBox" onChange={onChangeCallback} value={commentText} />
             </label>
 
             <div className='row'>
-              <div className='col m2 l2'></div>
-              <div className='col s12 m4 l4'>
-                <button className="waves-effect waves-light btn hoverable blue accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</button>
-              </div>
+              <div><button id="upload_widget" className="cloudinary-button" onClick={selectPhotoCallback}>Upload Photos</button></div>
+            </div>
 
-              <div className='col s12 m4 l4'>              
+            <div className='row'>
+              <div className='col s6 m6 l6'>
+                <button className="waves-effect waves-light btn hoverable green accent-3" id="submit-complete" value="Submit" onClick={closeCallback}>Submit</button>
+              </div>
+              <div className='col s6 m6 l6'>
                 <button className="waves-effect waves-light btn hoverable red accent-3" id="cancel-submit" value="cancel" onClick={cancelCallback}>Cancel</button>
               </div>
-              <div className='col m2 l2'></div>
-              <div><button id="upload_widget" className="cloudinary-button" onClick={selectPhotoCallback}>Upload files</button></div>
             </div>
         </form>
     </div>

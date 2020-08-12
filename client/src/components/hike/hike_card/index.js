@@ -149,7 +149,8 @@ render () {
     return (
         <div className="row">
             <Modal
-                show={this.state.showModal}
+            show={true}
+                // show={this.state.showModal}
                 closeCallback={this.submitComplete}
                 cancelCallback={this.toggleModal}
                 onChangeCallback={(e) => this.onChange(e)}
