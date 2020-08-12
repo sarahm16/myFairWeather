@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import HikeCard from '../components/results/hike_card/index';
+import HikeCard from '../components/hike/hike_card/index';
 import Alert from '../components/alert';
 import API from '../utils/API';
 
