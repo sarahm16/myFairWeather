@@ -14,7 +14,7 @@ const Modal = ({customClass, show, closeCallback, onChangeCallback, commentText,
             </label>
 
             <div className='row'>
-              <div><button id="upload_widget" className="cloudinary-button" onClick={selectPhotoCallback}>Upload Photos</button></div>
+              <div><button id="upload_widget" className="cloudinary-button" onClick={selectPhotoCallback}>Upload Photos <i className='material-icons'>add_a_photo</i></button></div>
             </div>
 
             <div className='row'>
