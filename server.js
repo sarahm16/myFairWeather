@@ -33,8 +33,8 @@ const db = require("./config/keys").mongoURI;
 mongoose
   .connect(
     process.env.MONGODB_URI || 
-  //"mongodb://userdb:userpassword1@ds357708.mlab.com:57708/heroku_sxjd6b94",
-    "mongodb+srv://user:userpassword@cluster0.ahbmh.mongodb.net/heroku_sxjd6b94?retryWrites=true&w=majority",
+    "mongodb://userdb:userpassword1@ds357708.mlab.com:57708/heroku_sxjd6b94",
+    //"mongodb+srv://user:userpassword@cluster0.ahbmh.mongodb.net/heroku_sxjd6b94?retryWrites=true&w=majority",
 
     { useNewUrlParser: true }
   )
