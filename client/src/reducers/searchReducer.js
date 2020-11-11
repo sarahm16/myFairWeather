@@ -3,7 +3,8 @@
 const searchReducer = (state = {}, action) => {
     switch (action.type) {
         case 'SEARCH':
-            console.log(action.type)
+            console.log('payload')
+            console.log(action.payload)
             return action.payload
     
         default:
