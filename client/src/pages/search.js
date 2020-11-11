@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+import {search } from '../actions/search';
 
 import Button from '../components/button';
 import Label from '../components/label';
@@ -71,6 +72,7 @@ class Search extends Component {
     }
 
     searchHikes = () => {
+        this.props.search();
         API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
         .then(res => {
             if(this.state.maxElevation !== null){
@@ -217,6 +219,7 @@ Search.propTypes = {
   });
   
   export default connect(
-    mapStateToProps
+    mapStateToProps,
+    { search }
   )(Search);
 
