@@ -73,6 +73,9 @@ class Search extends Component {
 
     searchHikes = () => {
         this.props.search();
+        const { latitude, longitude, minLength, maxTravel, maxElevation, sort } = this.state;
+        this.props.search(latitude, longitude, minLength, maxTravel, maxElevation, sort);
+        
         API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
         .then(res => {
             if(this.state.maxElevation !== null){
