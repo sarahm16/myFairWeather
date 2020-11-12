@@ -20,7 +20,6 @@ class Search extends Component {
     constructor() {
         super();
             this.state = {
-                pageNumber: 0,
                 trails: [],
                 minLength: "",
                 maxElevation: "",
@@ -58,12 +57,6 @@ class Search extends Component {
           });
     }
 
-    nextPage = () => {
-        let nextPage = this.state.pageNumber + 1;
-        this.setState({pageNumber: nextPage})
-        console.log('page: ' + this.state.pageNumber)
-    }
-
     onChange = event => {
         this.setState({
             [event.target.id]: event.target.value,
@@ -72,28 +65,11 @@ class Search extends Component {
     }
 
     searchHikes = () => {
+        //grab user inputs from search form
         const { latitude, longitude, minLength, maxTravel, maxElevation, sort } = this.state;
-
-        this.props.search(latitude, longitude, minLength, maxTravel, maxElevation, sort);
         
-
-        // API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
-        // .then(res => {
-        //     if(this.state.maxElevation !== null){
-        //         const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-        //         this.setState({
-        //             isSubmitted: true,
-        //             trails: filteredHikes
-        //         })
-        //     }
-        //     else {
-        //         let unfiltered = res.data.trails;
-        //         this.setState({
-        //             isSubmitted: true,
-        //             trails: unfiltered
-        //         })
-        //     }
-        // })  
+        //dispatch search action to search reducer
+        this.props.search(latitude, longitude, minLength, maxTravel, maxElevation, sort);
     }
 
     onSubmit(event) {
@@ -201,11 +177,8 @@ class Search extends Component {
                         </form>
                         {!this.props.isLoading && <div><Results
                             type='search-results'
-                            // trails={this.state.trails}
-                            invalidZip={this.state.invalidZip}
                             />
                         </div>}
-                        {/* <Results /> */}
                         {this.state.invalidZip && <Alert page='invalid zip'/>}
                     </div>
                 </div>
