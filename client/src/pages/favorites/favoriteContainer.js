@@ -3,10 +3,15 @@ import Results from '../results';
 import Navbar from '../../components/navbar';
 import Favorites from './favorites';
 
-import './style.css'
+import './style.css';
 
-function FavoriteContainer() {
+import findFavorites from '../../actions/favorites';
+import { connect } from 'react-redux';
+
+const  FavoriteContainer = (props) => {
     //call findFavorites action to get favorites and set the store
+
+    props.findFavorites(props.id);
 
     return <div>
         <div className='row'>
@@ -21,4 +26,17 @@ function FavoriteContainer() {
     </div> 
 }
 
-export default FavoriteContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        findFavorites: (id) => dispatch(findFavorites(id))
+    }
+}
+
+const mapStateToProps = state => ({
+    id: state.auth.user.id
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+) (FavoriteContainer);

@@ -9,6 +9,8 @@ const searchReducer = (state = {isLoading: true}, action) => {
             console.log(action.payload)
             //return {results: action.payload, isLoading: false}
             return {results: action.payload, isLoading: false}
+        case 'FAVORITES':
+            return {results: action.payload, isLoading: false}
     
         default:
             return state
