@@ -21,34 +21,13 @@ class Results extends Component  {
         //this.setState({trails: this.props.trails})
         let id = this.props.auth.user.id
 
-        //function that sets state of component with results of api call
-        let useResults = (trailList, page) => {
-            if(trailList == '' || trailList.length === 0) {
-                this.setState({
-                    page: page, //need page to determine which alert will be used for no results
-                    //noTrails: true, //alerts user that no trails were found
-                    //loading: false //removes loading bar
-                })
-            } else {this.setState({ trails: trailList, loading: false })}
-        }
-
         switch (this.props.type) {
-            // case 'search-results':
-            //     useResults([], 'search-results');
-            // break;
-            case 'favorite-hikes':
-                //api call to favorites database, finds all hikes correlated with user id
-                API.displayFavorites(id)
-                    .then(res => {
-                        useResults(res.data, 'favorites')
-                    })
-                break;
             case 'completed-hikes':
                 //api call to completed database, finds all hikes correlated with user id
                 API.displayCompleted(id)
                     .then(res => {
                         console.log(res.data);
-                        useResults(res.data, 'completed');
+                        //useResults(res.data, 'completed');
                 })
                 break;       
             default:
@@ -62,8 +41,6 @@ class Results extends Component  {
     }
 
     render() {
-        console.log('results page');
-        //console.log(this.props.search);
         let trails = this.props.results.slice(this.state.pageNumber, this.state.pageNumber * 10)
         
         return(
