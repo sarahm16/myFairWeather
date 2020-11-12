@@ -26,16 +26,16 @@ class Results extends Component  {
             if(trailList == '' || trailList.length === 0) {
                 this.setState({
                     page: page, //need page to determine which alert will be used for no results
-                    noTrails: true, //alerts user that no trails were found
-                    loading: false //removes loading bar
+                    //noTrails: true, //alerts user that no trails were found
+                    //loading: false //removes loading bar
                 })
             } else {this.setState({ trails: trailList, loading: false })}
         }
 
         switch (this.props.type) {
-            case 'search-results':
-                useResults([], 'search-results');
-            break;
+            // case 'search-results':
+            //     useResults([], 'search-results');
+            // break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
                 API.displayFavorites(id)
