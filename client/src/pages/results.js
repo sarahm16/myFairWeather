@@ -34,7 +34,7 @@ class Results extends Component  {
 
         switch (this.props.type) {
             case 'search-results':
-                useResults(this.props.trails, 'search-results');
+                useResults([], 'search-results');
             break;
             case 'favorite-hikes':
                 //api call to favorites database, finds all hikes correlated with user id
@@ -62,7 +62,9 @@ class Results extends Component  {
     }
 
     render() {
-        let trails = this.state.trails.slice(this.state.pageNumber, this.state.pageNumber * 10)
+        console.log('results page');
+        //console.log(this.props.search);
+        let trails = this.props.results.slice(this.state.pageNumber, this.state.pageNumber * 10)
         
         return(
             <div>
@@ -105,7 +107,9 @@ Results.propTypes = {
   };
   
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    search: state.search,
+    results: state.search.results
   });
   
   export default connect(

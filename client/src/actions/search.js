@@ -4,11 +4,9 @@ import API from '../utils/API';
 export const search = (latitude, longitude, minLength, maxTravel, maxElevation, sort) => {
   return dispatch => {
     API.searchHikes(latitude, longitude, minLength, maxTravel, maxElevation, sort)
-      .then( res => {
+      .then(res => {
+        dispatch({type: 'SEARCH_REQUEST'});
         if(maxElevation !== null) {
-
-          dispatch({type: 'SEARCH_REQUEST'});
-
           const filteredHikes = res.data.trails.filter(trail => trail.ascent < maxElevation)
           
           dispatch({
@@ -17,9 +15,6 @@ export const search = (latitude, longitude, minLength, maxTravel, maxElevation, 
           })
         }
         else {
-
-          dispatch({type: 'SEARCH_REQUEST'});
-
           dispatch({
             type: 'SEARCH',
             payload: res.data.trails

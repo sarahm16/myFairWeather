@@ -72,27 +72,28 @@ class Search extends Component {
     }
 
     searchHikes = () => {
-        this.props.search();
         const { latitude, longitude, minLength, maxTravel, maxElevation, sort } = this.state;
+
         this.props.search(latitude, longitude, minLength, maxTravel, maxElevation, sort);
         
-        API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
-        .then(res => {
-            if(this.state.maxElevation !== null){
-                const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
-                this.setState({
-                    isSubmitted: true,
-                    trails: filteredHikes
-                })
-            }
-            else {
-                let unfiltered = res.data.trails;
-                this.setState({
-                    isSubmitted: true,
-                    trails: unfiltered
-                })
-            }
-        })  
+
+        // API.searchHikes(this.state.latitude, this.state.longitude, this.state.minLength, this.state.maxTravel, this.state.maxElevation, this.state.sort)
+        // .then(res => {
+        //     if(this.state.maxElevation !== null){
+        //         const filteredHikes = res.data.trails.filter(trail => trail.ascent < this.state.maxElevation)
+        //         this.setState({
+        //             isSubmitted: true,
+        //             trails: filteredHikes
+        //         })
+        //     }
+        //     else {
+        //         let unfiltered = res.data.trails;
+        //         this.setState({
+        //             isSubmitted: true,
+        //             trails: unfiltered
+        //         })
+        //     }
+        // })  
     }
 
     onSubmit(event) {
@@ -198,12 +199,13 @@ class Search extends Component {
                                 </div>
                             </div>
                         </form>
-                        {this.state.isSubmitted && <div><Results
+                        {!this.props.isLoading && <div><Results
                             type='search-results'
-                            trails={this.state.trails}
+                            // trails={this.state.trails}
                             invalidZip={this.state.invalidZip}
                             />
                         </div>}
+                        {/* <Results /> */}
                         {this.state.invalidZip && <Alert page='invalid zip'/>}
                     </div>
                 </div>
@@ -218,7 +220,9 @@ Search.propTypes = {
   };
   
   const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    isLoading: state.search.isLoading
+    //not updating the state?
   });
   
   export default connect(
