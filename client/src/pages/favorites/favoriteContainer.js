@@ -16,19 +16,14 @@ const  FavoriteContainer = (props) => {
         props.findFavorites(props.id)
     }, [])
 
-    return (<div>
-                <div className='row'>
-                    <Navbar page='favorites'/>
-                </div>
-                {/* {!props.isLoading &&
-                <div className='favorites index-card-bg'>
-                    <div className='col s8 offset-s2'>
-                        <Results type='favorite-hikes'/>
-                    </div>
-                </div>} */}
-                {!props.isLoading && <Favorites />}
-            </div>) 
-        
+    return (
+        <div>
+            <div className='row'>
+                <Navbar page='favorites'/>
+            </div>
+            {!props.isLoading && <Favorites />}
+        </div>
+    )        
 }
 
 const mapDispatchToProps = dispatch => {

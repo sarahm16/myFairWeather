@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import HikeCard from '../components/hike/hike_card/index';
@@ -11,7 +11,7 @@ class Results extends Component  {
         this.state = {
             trails: [],
             noTrails: false,
-            loading: true,
+            loading: false,
             page: '',
             pageNumber: 1
         }
@@ -19,29 +19,38 @@ class Results extends Component  {
 
     componentDidMount() {
         //this.setState({trails: this.props.trails})
-        let id = this.props.auth.user.id
+        //let id = this.props.auth.user.id
 
-        switch (this.props.type) {
-            case 'completed-hikes':
-                //api call to completed database, finds all hikes correlated with user id
-                API.displayCompleted(id)
-                    .then(res => {
-                        console.log(res.data);
-                        //useResults(res.data, 'completed');
-                })
-                break;       
-            default:
-                break;
-        }
+        // switch (this.props.type) {
+        //     case 'completed-hikes':
+        //         //api call to completed database, finds all hikes correlated with user id
+        //         API.displayCompleted(id)
+        //             .then(res => {
+        //                 console.log(res.data);
+        //                 //useResults(res.data, 'completed');
+        //         })
+        //         break;       
+        //     default:
+        //         break;
+        // }
+
+        this.setState({
+            trails: this.props.results.slice(0, 10)
+        })
     }
 
     nextPage = () => {
         let nextPage = this.state.pageNumber + 1;
-        this.setState({pageNumber: nextPage})
+        //console.log(this.props.results)
+        let trails = this.props.results.slice(this.state.pageNumber * 10, this.state.pageNumber * 10 + 10)
+        this.setState({
+            pageNumber: nextPage,
+            trails: trails
+        })
     }
 
     render() {
-        let trails = this.props.results.slice(this.state.pageNumber, this.state.pageNumber * 10)
+        //let trails = this.props.results.trails.slice(this.state.pageNumber, this.state.pageNumber * 10)
         
         return(
             <div>
@@ -51,7 +60,7 @@ class Results extends Component  {
                         <div className="indeterminate"></div>
                     </div> }
                 {/* map the array of trails, create hikecard component for each trail */}
-                {trails.map(trail => {
+                {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
                     id={trail.id}
                     key={trail.id}
