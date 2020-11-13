@@ -10,7 +10,7 @@ import findCompleted from '../../actions/completed';
 function CompletedContainer(props) {
 
     useEffect(() => {
-        props.findCompleted('testing')
+        props.findCompleted(props.id)
     }, [])
 
     return <div>
@@ -29,8 +29,12 @@ const mapDispatchToProps = dispatch => ({
     findCompleted: (id) => dispatch(findCompleted(id))
 })
 
+const mapStateToProps = state => ({
+    id: state.auth.user.id
+})
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )
  (CompletedContainer);
