@@ -33,6 +33,7 @@ class Results extends Component  {
         //     default:
         //         break;
         // }
+        console.log(this.props.results)
 
         this.setState({
             trails: this.props.results.slice(0, 10)
