@@ -7,6 +7,8 @@ function findCompleted(id) {
     //     payload: id
     // }
     return dispatch => {
+        dispatch({type: 'SEARCH_REQUEST'});
+
         API.displayCompleted(id)
             .then(res => {
                 dispatch({

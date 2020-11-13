@@ -19,7 +19,7 @@ function CompletedContainer(props) {
         </div>    
         <div className='completed index-card-bg'>
             <div className='col s8 offset-s2'>
-                {/* <Results type='completed-hikes'/> */}
+                {!props.isLoading && <Results />}
             </div>
         </div>
     </div>
@@ -30,7 +30,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-    id: state.auth.user.id
+    id: state.auth.user.id,
+    isLoading: state.search.isLoading
 })
 
 export default connect(
