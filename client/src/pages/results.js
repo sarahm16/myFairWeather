@@ -11,30 +11,12 @@ class Results extends Component  {
         this.state = {
             trails: [],
             noTrails: false,
-            loading: false,
             page: '',
             pageNumber: 1
         }
     }
 
     componentDidMount() {
-        //this.setState({trails: this.props.trails})
-        //let id = this.props.auth.user.id
-
-        // switch (this.props.type) {
-        //     case 'completed-hikes':
-        //         //api call to completed database, finds all hikes correlated with user id
-        //         API.displayCompleted(id)
-        //             .then(res => {
-        //                 console.log(res.data);
-        //                 //useResults(res.data, 'completed');
-        //         })
-        //         break;       
-        //     default:
-        //         break;
-        // }
-        console.log(this.props.results)
-
         this.setState({
             trails: this.props.results.slice(0, 10)
         })
@@ -42,8 +24,8 @@ class Results extends Component  {
 
     nextPage = () => {
         let nextPage = this.state.pageNumber + 1;
-        //console.log(this.props.results)
         let trails = this.props.results.slice(this.state.pageNumber * 10, this.state.pageNumber * 10 + 10)
+       
         this.setState({
             pageNumber: nextPage,
             trails: trails
@@ -51,7 +33,6 @@ class Results extends Component  {
     }
 
     render() {
-        //let trails = this.props.results.trails.slice(this.state.pageNumber, this.state.pageNumber * 10)
         
         return(
             <div>

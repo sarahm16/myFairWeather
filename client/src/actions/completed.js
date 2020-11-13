@@ -1,11 +1,6 @@
 import API from '../utils/API';
 
 function findCompleted(id) {
-
-    // return {
-    //     type: 'COMPLETED',
-    //     payload: id
-    // }
     return dispatch => {
         dispatch({type: 'SEARCH_REQUEST'});
 
