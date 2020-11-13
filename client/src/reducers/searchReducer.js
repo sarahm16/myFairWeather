@@ -12,7 +12,8 @@ const searchReducer = (state = {isLoading: true}, action) => {
         case 'COMPLETED':
             console.log(action.payload)
             return {results: action.payload, isLoading: false}
-    
+        case 'RESET_SEARCH':
+            return {results: [], isLoading: false}
         default:
             return state
     }

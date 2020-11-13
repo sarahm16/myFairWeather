@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import {search } from '../actions/search';
+
+import { search } from '../actions/search';
+import resetSearch from '../actions/reset';
 
 import Button from '../components/button';
 import Label from '../components/label';
 import Results from './results';
 import Navbar from '../components/navbar';
 import Alert from '../components/alert';
-import API from '../utils/API';
 
 import M from 'materialize-css';
 
@@ -93,6 +94,7 @@ class Search extends Component {
     }
 
     render() {
+        this.props.resetSearch();
         return(
             <div>
                 <Navbar page='search'/>
@@ -175,6 +177,9 @@ class Search extends Component {
                                 </div>
                             </div>
                         </form>
+                        {this.props.isLoading && <div className="progress">
+                            <div className="indeterminate"></div>
+                        </div>}
                         {!this.props.isLoading && <div><Results
                             type='search-results'
                             />
@@ -195,11 +200,11 @@ Search.propTypes = {
   const mapStateToProps = state => ({
     auth: state.auth,
     isLoading: state.search.isLoading
-    //not updating the state?
   });
+
   
   export default connect(
     mapStateToProps,
-    { search }
+    { search, resetSearch }
   )(Search);
 
