@@ -11,12 +11,17 @@ class Results extends Component  {
         this.state = {
             trails: [],
             noTrails: false,
-            page: '',
             pageNumber: 1
         }
     }
 
     componentDidMount() {
+        //console.log(this.props)
+        // if(this.props.page === 'favorites') {
+        //     this.setState({
+        //         trails: this.props.favorites
+        //     })
+        // } else 
         this.setState({
             trails: this.props.results.slice(0, 10)
         })
@@ -37,10 +42,10 @@ class Results extends Component  {
         return(
             <div>
                 {/* materialize loading bar for when hikes are loading */}
-                {this.state.loading &&
+                {/* {this.state.loading &&
                     <div className="progress">
                         <div className="indeterminate"></div>
-                    </div> }
+                    </div> } */}
                 {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
                     return <HikeCard type={this.props.type}
@@ -78,6 +83,7 @@ Results.propTypes = {
     auth: state.auth,
     search: state.search,
     results: state.search.results
+    //favorites: state.favorites.results
   });
   
   export default connect(

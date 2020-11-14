@@ -16,7 +16,11 @@ function CompletedContainer(props) {
     return <div>
         <div className='row'>
             <Navbar page='completed' />
-        </div>    
+        </div>
+
+        {props.isLoading && <div className="progress">
+            <div className="indeterminate"></div>
+        </div>}    
         <div className='completed index-card-bg'>
             <div className='col s8 offset-s2'>
                 {!props.isLoading && <Results />}

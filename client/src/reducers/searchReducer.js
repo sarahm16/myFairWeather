@@ -7,7 +7,7 @@ const searchReducer = (state = {isLoading: true}, action) => {
         case 'SEARCH':
             return {results: action.payload, isLoading: false}
         case 'FAVORITES':
-            //console.log(action.payload)
+            console.log(action.payload)
             return {results: action.payload, isLoading: false}
         case 'COMPLETED':
             console.log(action.payload)

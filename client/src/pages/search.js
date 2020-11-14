@@ -38,7 +38,12 @@ class Search extends Component {
             this.onSubmit=this.onSubmit.bind(this);     
     }
 
+    componentWillMount() {
+        this.props.resetSearch();
+    }
+
     componentDidMount() {
+
         //redirect user to login page if user is not logged in
         if(!this.props.auth.isAuthenticated) {
             this.props.history.push('/login')
@@ -94,7 +99,7 @@ class Search extends Component {
     }
 
     render() {
-        this.props.resetSearch();
+        //this.props.resetSearch();
         return(
             <div>
                 <Navbar page='search'/>
@@ -191,7 +196,6 @@ class Search extends Component {
         )        
     }    
 }
-
 
 Search.propTypes = {
     auth: PropTypes.object.isRequired
