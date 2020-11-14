@@ -16,12 +16,6 @@ class Results extends Component  {
     }
 
     componentDidMount() {
-        //console.log(this.props)
-        // if(this.props.page === 'favorites') {
-        //     this.setState({
-        //         trails: this.props.favorites
-        //     })
-        // } else 
         this.setState({
             trails: this.props.results.slice(0, 10)
         })
@@ -38,7 +32,6 @@ class Results extends Component  {
     }
 
     render() {
-        
         return(
             <div>
                 {/* materialize loading bar for when hikes are loading */}
@@ -67,7 +60,7 @@ class Results extends Component  {
                     day={trail.day}
                     />
                 })}
-                {this.props.type === 'search-results' && <button className='load-more btn waves-effect waves-light hoverable blue accent-3' onClick={this.nextPage}>Load More Hikes</button>}
+                {this.state.trails.length >= 10 && <button className='load-more btn waves-effect waves-light hoverable blue accent-3' onClick={this.nextPage}>Load More Hikes</button>}
                 {/* Alert user when no trails are found. Alert text changes depending on which results are being displayed */}
                 {this.state.noTrails &&  <Alert page={this.state.page}/>}
             </div>
