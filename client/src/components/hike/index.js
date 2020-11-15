@@ -20,8 +20,8 @@ class Hike extends Component {
                     </div>
                   <h6>5-Day Forecast:</h6>
                   <div className = "row">
-                      <div className = "col s1 m1 12"></div>
-                      <WeatherCard forecast = {this.props.forecast}></WeatherCard>
+                      <div className="col s1 m1 12"></div>
+                      <WeatherCard forecast={this.props.forecast} />
 
                   </div>
                   {/* <div className='summary'>

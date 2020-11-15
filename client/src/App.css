@@ -2,10 +2,16 @@
   text-align: center;
 }
 
-/* .sort-buttons {
-  padding-left: 20px;
-  display: inline;
-} */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('./background.png');
+  /* background-color: rgba(255, 206, 214, 0.774); */
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+}
 
 nav.nav-center ul {
   text-align: center;

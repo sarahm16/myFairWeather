@@ -2,21 +2,17 @@ import React from 'react';
 import image from "./background.png"
 import "./style.css";
 
-class Background extends React.Component 
-{
-    constructor(props)
-    {
+class Background extends React.Component {
+    constructor(props){
         super(props)
-        this.state =
-        {
+        this.state={
             height: window.innerHeight,
             width: window.innerWidth
         }
     }
 
     componentDidMount() {
-        window.addEventListener("resize", ()=>
-        {
+        window.addEventListener("resize", ()=>{
             this.setState(
                 {
                     "height": window.innerHeight < window.innerWidth * 0.5 ? window.innerWidth * 0.5 : window.innerHeight,
@@ -25,8 +21,7 @@ class Background extends React.Component
         });
     }
 
-    render()
-    {
+    render() {
         return (
             <div className="fill-screen" on='true'>
                 <img alt = "" src={image} width = {this.state.width}  height = {this.state.height} ></img>

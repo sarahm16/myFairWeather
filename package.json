@@ -1,7 +1,7 @@
 {
   "name": "fair-weather-hiking",
   "version": "1.0.0",
-  "description": "Mern Auth Example",
+  "description": "Fair Weather Hiking",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
