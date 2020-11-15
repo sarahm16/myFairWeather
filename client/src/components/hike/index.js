@@ -24,14 +24,14 @@ class Hike extends Component {
                       <WeatherCard forecast = {this.props.forecast}></WeatherCard>
 
                   </div>
-                  <div className='summary'>
+                  {/* <div className='summary'>
                     <h6>Best Day:</h6>
                     <div className = "row">
                         <BestDay 
                           bestDay = {this.props.bestDay}
                         ></BestDay>
                     </div>
-                  </div>
+                  </div> */}
                   <br />
               </div>
           </div>

@@ -76,7 +76,7 @@ class HikeCard extends Component {
     }
 
     onChange = event => {
-        console.log(event.target.value)
+        //console.log(event.target.value)
         this.setState({ userComment: event.target.value })
     }
     
@@ -116,26 +116,26 @@ class HikeCard extends Component {
             }
             this.setState({forecast: forecastData});
             return;
-        }).then(() =>{
-            let bestTemp = Weather.getBestDay(this.state.forecast);
-            return bestTemp;
-        })
-        .then((bestTemp)=>{
-            let bestWeather = Weather.bestWeather(bestTemp);
-            return bestWeather;
-        })
-        .then((res)=>{
-            let sorted = Weather.weatherSort(res);
-            let bestWeather;
-            if(sorted.constructor === Array){
-                bestWeather = sorted;
-            } else{
-                bestWeather = [sorted];
-            }
-            this.setState({
-                bestDay: bestWeather,
-            })
-            return;
+        // }).then(() =>{
+        //     let bestTemp = Weather.getBestDay(this.state.forecast);
+        //     return bestTemp;
+        // })
+        // .then((bestTemp)=>{
+        //     let bestWeather = Weather.bestWeather(bestTemp);
+        //     return bestWeather;
+        // })
+        // .then((res)=>{
+        //     let sorted = Weather.weatherSort(res);
+        //     let bestWeather;
+        //     if(sorted.constructor === Array){
+        //         bestWeather = sorted;
+        //     } else{
+        //         bestWeather = [sorted];
+        //     }
+        //     this.setState({
+        //         bestDay: bestWeather,
+        //     })
+        //     return;
         }).then(()=>{
             this.setState({show_more: true});
             return;
@@ -207,7 +207,7 @@ render () {
                     {this.state.show_more &&
                      <Hike
                         forecast = {this.state.forecast}
-                        bestDay = {this.state.bestDay}
+                        //bestDay = {this.state.bestDay}
                         summary ={this.props.summary}
                     />
                     //<Timer />
