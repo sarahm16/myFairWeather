@@ -53,8 +53,8 @@ if (localStorage.jwtToken) {
 function App() {
   return (
     <Provider store={store}>
-    <Background />
-    {/* <div className='bg'></div> */}
+    {/* <Background /> */}
+    <div className='bg'></div>
       <Router>
           <div className="App">
             {/* <Navbar /> */}
