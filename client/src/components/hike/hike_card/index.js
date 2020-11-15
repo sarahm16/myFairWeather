@@ -161,7 +161,8 @@ render () {
             <div className="col s12 m12 l12">
                 <div className="card hoverable border">
                         <div className="card-image">
-                        {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>}
+                        {this.props.type =='completed-hikes' && <div className='date'>Completed: {this.props.day}</div>}
+                        {/* {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>} */}
                         {this.props.type !=='completed-hikes' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                         </div>}
