@@ -1,5 +1,5 @@
 import React from 'react';
-import image from "./background2.jpg"
+import image from "./background3.png"
 import "./style.css";
 
 import Compress from 'react-image-file-resizer';
