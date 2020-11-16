@@ -68,6 +68,7 @@ function App() {
             <Route exact path='/completed' component={CompletedContainer} />
           </div>
       </Router>
+
     </Provider>
     
   );
