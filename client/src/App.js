@@ -4,13 +4,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import PrivateRoute from "./routes/privateRoute";
 
-//import Register from './pages/register';
-//import Login from './pages/login';
-// import Dashboard from "./components/dashboard/dashboard";
-// import Stats from './pages/stats';
-// import Search from './pages/search';
-// import FavoriteContainer from './pages/favorites/favoriteContainer';
-// import CompletedContainer from './pages/completed/completedContainer';
+import Register from './pages/register';
+
 import Background from "./background";
 
 import jwt_decode from "jwt-decode";
@@ -24,13 +19,13 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 
 //local imports
-const Register = lazy(() => import('./pages/register'));
-const Login = lazy(() => import('./pages/login'));
-const Dashboard = lazy(() => import('./components/dashboard/dashboard'));
-const Stats = lazy(() => import('./pages/stats'));
-const Search = lazy(() => import('./pages/search'));
-const FavoriteContainer = lazy(() => import('./pages/favorites/favoriteContainer'));
-const CompletedContainer = lazy(() => import('./pages/completed/completedContainer'));
+//const Register = lazy(() => import('./pages/register'));
+// const Login = lazy(() => import('./pages/login'));
+// const Dashboard = lazy(() => import('./components/dashboard/dashboard'));
+// const Stats = lazy(() => import('./pages/stats'));
+// const Search = lazy(() => import('./pages/search'));
+// const FavoriteContainer = lazy(() => import('./pages/favorites/favoriteContainer'));
+// const CompletedContainer = lazy(() => import('./pages/completed/completedContainer'));
 //const Background = lazy(() => import("./background"));
 
 // Check for token to keep user logged in
