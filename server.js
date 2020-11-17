@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const compression = require('compression')
 
 const path = require('path');
 
@@ -11,6 +12,9 @@ const hikes = require('./routes/api/hikes')
 const router = express.Router();
 
 const app = express();
+
+//compress all responses
+app.use(compression());
 
 
 if(process.env.NODE_ENV === "production")
