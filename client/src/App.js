@@ -4,10 +4,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import PrivateRoute from "./routes/privateRoute";
 
-import Register from './pages/register';
-
-import Background from "./background";
-
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -27,6 +23,15 @@ import './App.css';
 // const FavoriteContainer = lazy(() => import('./pages/favorites/favoriteContainer'));
 // const CompletedContainer = lazy(() => import('./pages/completed/completedContainer'));
 //const Background = lazy(() => import("./background"));
+
+import Register from './pages/register';
+import Login from './pages/login';
+import Dashboard from './components/dashboard/dashboard';
+import Stats from './pages/stats';
+import Search from './pages/search';
+import FavoriteContainer from './pages/favorites/favoriteContainer';
+import CompletedContainer from './pages/completed/completedContainer';
+import Background from './background';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -59,7 +64,7 @@ function App() {
     <Provider store={store}>
     <Background />
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}> */}
           <div className="App">
             <Route exact path='/' component={Register} />
             <Route exact path='/register' component={Register} />
@@ -70,7 +75,7 @@ function App() {
             <Route exact path='/stats' component={Stats} />
             <Route exact path='/completed' component={CompletedContainer} />
           </div>
-        </Suspense>
+        {/* </Suspense> */}
       </Router>
 
     </Provider>
