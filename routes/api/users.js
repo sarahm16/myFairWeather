@@ -11,7 +11,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
-router.post("/register", (req, res) => {
+const timeout = require('connect-timeout');
+
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
+
+router.post("/register", timeout('60s'), haltOnTimedout, (req, res) => {
 
     console.log('api route');
     

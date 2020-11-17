@@ -16,6 +16,11 @@ const app = express();
 //compress all responses
 app.use(compression());
 
+// const httpServer = require('http').createServer({...});
+// httpServer.timeout = 25 * 1000;
+// httpServer.keepAliveTimeout = 70 * 1000;
+// httpServer.headersTimeout = 120 * 1000;
+
 
 if(process.env.NODE_ENV === "production")
 {
@@ -32,6 +37,7 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+
 
 // Connect to MongoDB
 mongoose
