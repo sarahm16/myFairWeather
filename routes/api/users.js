@@ -12,6 +12,8 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
 router.post("/register", (req, res) => {
+
+    console.log('api route');
     
     // Form validation
     const { errors, isValid } = validateRegisterInput(req.body);
