@@ -14,7 +14,7 @@ const router = express.Router();
 const app = express();
 
 //compress all responses
-app.use(compression());
+// app.use(compression());
 
 
 if(process.env.NODE_ENV === "production")
