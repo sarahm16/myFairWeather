@@ -1,17 +1,16 @@
 //packages
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import PrivateRoute from "./routes/privateRoute";
 
-//local imports
-import Register from './pages/register';
-import Login from './pages/login';
-import Dashboard from "./components/dashboard/dashboard";
-import Stats from './pages/stats';
-import Search from './pages/search';
-import FavoriteContainer from './pages/favorites/favoriteContainer';
-import CompletedContainer from './pages/completed/completedContainer';
+//import Register from './pages/register';
+//import Login from './pages/login';
+// import Dashboard from "./components/dashboard/dashboard";
+// import Stats from './pages/stats';
+// import Search from './pages/search';
+// import FavoriteContainer from './pages/favorites/favoriteContainer';
+// import CompletedContainer from './pages/completed/completedContainer';
 import Background from "./background";
 
 import jwt_decode from "jwt-decode";
@@ -23,6 +22,16 @@ import store from './store';
 //css imports
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
+
+//local imports
+const Register = lazy(() => import('./pages/register'));
+const Login = lazy(() => import('./pages/login'));
+const Dashboard = lazy(() => import('./components/dashboard/dashboard'));
+const Stats = lazy(() => import('./pages/stats'));
+const Search = lazy(() => import('./pages/search'));
+const FavoriteContainer = lazy(() => import('./pages/favorites/favoriteContainer'));
+const CompletedContainer = lazy(() => import('./pages/completed/completedContainer'));
+//const Background = lazy(() => import("./background"));
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -54,10 +63,9 @@ function App() {
   return (
     <Provider store={store}>
     <Background />
-    {/* <div className='bg'></div> */}
       <Router>
+        <Suspense fallback={<div>Loading...</div>}>
           <div className="App">
-            {/* <Navbar /> */}
             <Route exact path='/' component={Register} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
@@ -67,6 +75,7 @@ function App() {
             <Route exact path='/stats' component={Stats} />
             <Route exact path='/completed' component={CompletedContainer} />
           </div>
+        </Suspense>
       </Router>
 
     </Provider>
