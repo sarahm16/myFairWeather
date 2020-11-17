@@ -28,6 +28,8 @@ router.post("/register", timeout('60s'), haltOnTimedout, (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
+
+    if (req.timedout) return res.send('timed out')
   
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
