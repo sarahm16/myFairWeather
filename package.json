@@ -17,13 +17,13 @@
   },
   "author": "",
   "license": "MIT",
-  "homepage": "https://fairweatherhiking.herokuapp.com/dashboard",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
     "compression": "^1.7.4",
     "concurrently": "^4.1.2",
+    "connect-timeout": "^1.9.0",
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
@@ -37,8 +37,5 @@
     "react-image-file-resizer": "^0.3.8",
     "validator": "^10.11.0",
     "zipcodes": "^8.0.0"
-  },
-  "devDependencies": {
-    "brotli-gzip-webpack-plugin": "^0.5.0"
   }
 }
