@@ -10,13 +10,12 @@ An app designed for hikers to search for hikes based on mileage, distance to tra
 * API
 * Redux
 * Express
-* Moment.js
 * Materialize CSS
 * Zipcodes.js
 * Cloudinary
 
 ## How to use
 
-npm run dev
+npm run start
 
 **fairweatherhiking.herokuapp.com**
