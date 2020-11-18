@@ -5,10 +5,10 @@ An app designed for hikers to search for hikes based on mileage, distance to tra
 ## Technologies
 
 * React.js
+* Redux
 * Node.js
 * MongoDB
 * API
-* Redux
 * Express
 * Materialize CSS
 * Zipcodes.js
@@ -16,6 +16,7 @@ An app designed for hikers to search for hikes based on mileage, distance to tra
 
 ## How to use
 
-npm run start
+In root folder:
+npm run dev 
 
 **fairweatherhiking.herokuapp.com**
