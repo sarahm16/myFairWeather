@@ -13,11 +13,11 @@ const keys = require("../../config/keys");
 
 const timeout = require('connect-timeout');
 
-function haltOnTimedout (req, res, next) {
-  if (!req.timedout) next()
-}
+// function haltOnTimedout (req, res, next) {
+//   if (!req.timedout) next()
+// }
 
-router.post("/register", timeout('60s'), haltOnTimedout, (req, res) => {
+router.post("/register", (req, res) => {
 
     console.log('api route');
     
@@ -29,7 +29,7 @@ router.post("/register", timeout('60s'), haltOnTimedout, (req, res) => {
       return res.status(400).json(errors);
     }
 
-    if (req.timedout) return res.send('timed out')
+    // if (req.timedout) return res.send('timed out')
   
     User.findOne({ email: req.body.email }).then(user => {
       if (user) {
