@@ -13,9 +13,6 @@ const router = express.Router();
 
 const app = express();
 
-//compress all responses
-app.use(compression());
-
 if(process.env.NODE_ENV === "production")
 {
   app.use(express.static('client/build'));
@@ -28,6 +25,9 @@ app.use(
     })
   );
 app.use(bodyParser.json());
+
+//compress all responses
+app.use(compression());
 
 // const extendTimeoutMiddleware = (req, res, next) => {
 //   const space = ' ';
@@ -85,9 +85,6 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
-
-//previous process.env.DB_URI
-//mongodb://heroku_sxjd6b94:tsn0hd4o017qp96chrgigvm008@ds357708.mlab.com:57708/heroku_sxjd6b94
 
 // Connect to MongoDB
 mongoose
