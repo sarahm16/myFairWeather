@@ -20,10 +20,13 @@ const  FavoriteContainer = (props) => {
             <div className='row'>
                 <Navbar page='favorites'/>
             </div>
-            {props.isLoading && <div className="progress">
-                <div className="indeterminate"></div>
-            </div>}
-            {!props.isLoading && <Results />}
+            <div className='favorites'>
+                {props.isLoading && <div className="progress">
+                    <div className="indeterminate"></div>
+                </div>}
+                {!props.isLoading && <Results />}
+            </div>
+            
         </div>
     )        
 }
