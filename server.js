@@ -13,6 +13,9 @@ const router = express.Router();
 
 const app = express();
 
+//compress all responses
+app.use(compression());
+
 if(process.env.NODE_ENV === "production")
 {
   app.use(express.static('client/build'));
@@ -25,9 +28,6 @@ app.use(
     })
   );
 app.use(bodyParser.json());
-
-//compress all responses
-app.use(compression());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
