@@ -11,12 +11,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
-const timeout = require('connect-timeout');
-
-// function haltOnTimedout (req, res, next) {
-//   if (!req.timedout) next()
-// }
-
 router.post("/register", (req, res) => {
 
     console.log('api route');
@@ -42,9 +36,6 @@ router.post("/register", (req, res) => {
           email: req.body.email,
           password: req.body.password
         });
-
-        console.log('newUser users.js routes')
-        console.log(newUser);
   
         // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -62,7 +53,6 @@ router.post("/register", (req, res) => {
   });
 
 router.post('/login', function(req,res) {
-    console.log('req.body: ' + req.body)
     const { errors, isValid } = validateLoginInput(req.body);
   
     // Check validation
