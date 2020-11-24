@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Results from '../results';
 import Navbar from '../../components/navbar';
-import Favorites from './favorites';
 
 import './style.css';
 
@@ -21,6 +20,9 @@ const  FavoriteContainer = (props) => {
             <div className='row'>
                 <Navbar page='favorites'/>
             </div>
+            {props.isLoading && <div className="progress">
+                <div className="indeterminate"></div>
+            </div>}
             {!props.isLoading && <Results />}
         </div>
     )        
