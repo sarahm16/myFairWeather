@@ -90,7 +90,7 @@ const db = require("./config/keys").mongoURI;
 mongoose
   .connect(
     //db,
-    process.env.DB_URI || 
+    process.env.newDB_URI || 
     //"mongodb://userdb:userpassword1@ds357708.mlab.com:57708/heroku_sxjd6b94",
     "mongodb+srv://user:eLY9nMNSt8HzjZaF@cluster0.ahbmh.mongodb.net/heroku_sxjd6b94?retryWrites=true&w=majority",
 
@@ -110,7 +110,6 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use('/api/favorite', users)
 app.use('/api/completed', users)
-// app.use("/api/hikes", hikes);
 
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
