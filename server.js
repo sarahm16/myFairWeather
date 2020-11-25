@@ -11,6 +11,7 @@ const hikes = require('./routes/api/hikes')
 
 const router = express.Router();
 
+
 const app = express();
 
 //compress all responses
