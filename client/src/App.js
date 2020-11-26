@@ -17,25 +17,14 @@ import './App.css';
 //local imports
 import Dashboard from './components/dashboard/dashboard';
 import Background from './background';
+import Register from './pages/register';
 
-const Register = lazy(() => import('./pages/register'));
+// const Register = lazy(() => import('./pages/register'));
 const Login = lazy(() => import('./pages/login'));
-// const Dashboard = lazy(() => import('./components/dashboard/dashboard'));
 const Stats = lazy(() => import('./pages/stats'));
 const Search = lazy(() => import('./pages/search'));
 const FavoriteContainer = lazy(() => import('./pages/favorites/favoriteContainer'));
 const CompletedContainer = lazy(() => import('./pages/completed/completedContainer'));
-//const Background = lazy(() => import("./background"));
-
-//local imports
-// import Register from './pages/register';
-// import Login from './pages/login';
-//import Dashboard from './components/dashboard/dashboard';
-// import Stats from './pages/stats';
-// import Search from './pages/search';
-// import FavoriteContainer from './pages/favorites/favoriteContainer';
-// import CompletedContainer from './pages/completed/completedContainer';
-// import Background from './background';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
