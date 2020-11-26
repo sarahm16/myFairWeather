@@ -1,23 +1,6 @@
 import React from 'react';
-import image from "./background3.jpeg"
+import image from "./background.webp"
 import "./style.css";
-
-import Compress from 'react-image-file-resizer';
-import Resizer from 'react-image-file-resizer';
-
-// Resizer.imageFileResizer(
-//     image, // the file from input
-//     480, // width
-//     480, // height
-//     "PNG", // compress format WEBP, JPEG, PNG
-//     100, // quality
-//     0, // rotation
-//     (uri) => {
-//       console.log(uri);
-//       // You upload logic goes here
-//     },
-//     "base64" // blob or base64 default base64
-//   );
 
 
 class Background extends React.Component {
@@ -38,14 +21,6 @@ class Background extends React.Component {
                 });
         });
     }
-
-    // resizeFile = image => new Promise(resolve => {
-    //     Resizer.imageFileResizer(image, 300, 300, 'PNG', 100, 0,
-    //     uri => {
-    //       resolve(uri);
-    //     }
-    //     );
-    // })
 
     render() {
         return (
