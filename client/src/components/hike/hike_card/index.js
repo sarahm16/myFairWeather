@@ -163,9 +163,9 @@ render () {
             <div className="col s12 m12 l12">
                 <div className="card hoverable border">
                         <div className="card-image">
-                        {this.props.type =='completed-hikes' && <div className='date'>Completed: {this.props.day}</div>}
+                        {this.props.page =='completed' && <div className='date'>Completed: {this.props.day}</div>}
                         {/* {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>} */}
-                        {this.props.type !=='completed-hikes' && <div className='location'>
+                        {this.props.page !=='completed' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
                         </div>}
                             {this.props.imgMedium !== '' && <img src={this.state.imageArray[this.state.imageNumber]} alt="hike"/>}
@@ -175,7 +175,7 @@ render () {
                                 <h6 className="card-title bg">{this.props.name}</h6>
                             </div>
                         </div>
-                        {this.props.type === 'completed-hikes' && <ul className="pagination">
+                        {this.props.page === 'completed' && <ul className="pagination">
                             <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
                                 {this.state.imageArray.map((image, index) => {
                                     return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className={index == this.state.imageNumber ? 'material-icons material-icons-outlined' : 'material-icons'}>fiber_manual_record</i></a></li>)
