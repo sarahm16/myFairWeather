@@ -7,6 +7,8 @@ import classnames from "classnames";
 import Button from '../components/button';
 import Label from '../components/label';
 
+import './styles.css';
+
 class Login extends Component {
   constructor() {
     super();
@@ -54,7 +56,7 @@ render() {
   const { errors } = this.state;
 
   return (
-      <div className="container">
+      <div className="login-container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2 form-background">
             {/* <Link to="/" className="btn-flat waves-effect">
