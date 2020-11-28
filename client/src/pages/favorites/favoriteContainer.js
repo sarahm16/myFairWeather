@@ -24,7 +24,7 @@ const  FavoriteContainer = (props) => {
                 {props.isLoading && <div className="progress">
                     <div className="indeterminate"></div>
                 </div>}
-                {!props.isLoading && <Results />}
+                {!props.isLoading && <Results page='favorite' />}
             </div>
             
         </div>

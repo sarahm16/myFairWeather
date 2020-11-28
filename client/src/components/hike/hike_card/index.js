@@ -37,6 +37,8 @@ class HikeCard extends Component {
             difficulty: difficulty,
             imageArray: imageArray
         })
+
+        console.log(this.props.page)
     }
 
     toggleModal = () => {
@@ -214,12 +216,12 @@ render () {
                     //<Timer />
                     }
                     <div className="card-action no-padding">
-                        {this.props.type !== 'favorite-hikes' && <button className="btn-large btn-by2" onClick={this.addFav}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
+                        {this.props.page !== 'favorite' && <button className="btn-large btn-by2" onClick={this.addFav}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
 
-                        {this.props.type !=='completed-hikes' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
+                        {this.props.page !=='completed' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
 
-                        {this.props.type == 'favorite-hikes' && <button className="btn-large btn-by2" id="delete-favorite" onClick={this.deleteFav}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
-                        {this.props.type == 'completed-hikes' && <button className="btn-large btn-by2" id="delete-completed" onClick={this.deleteCompleted}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.page == 'favorite' && <button className="btn-large btn-by2" id="delete-favorite" onClick={this.deleteFav}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
+                        {this.props.page == 'completed' && <button className="btn-large btn-by2" id="delete-completed" onClick={this.deleteCompleted}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
 
                         {!this.state.show_more && <button id="More-Info" onClick={this.moreInfo}>More Info<i className="small material-icons icon-black">expand_more</i></button>}
                         {this.state.show_more && <button id="Less-Info" onClick={this.lessInfo}>Less Info<i className="small material-icons icon-white">expand_less</i></button>}
@@ -236,7 +238,8 @@ HikeCard.propTypes = {
   };
   
 const mapStateToProps = state => ({
-auth: state.auth
+    auth: state.auth,
+    page: state.page
 });
   
 export default connect(
