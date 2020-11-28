@@ -5,6 +5,8 @@ import HikeCard from '../components/hike/hike_card/index';
 import Alert from '../components/alert';
 import API from '../utils/API';
 
+import setPage from '../actions/setPage';
+
 class Results extends Component  {
     constructor() {
         super();
@@ -19,6 +21,8 @@ class Results extends Component  {
         this.setState({
             trails: this.props.results.slice(0, 10)
         })
+        //console.log(this.props.page)
+        this.props.setPage(this.props.page);
     }
 
     nextPage = () => {
@@ -78,7 +82,12 @@ Results.propTypes = {
     results: state.search.results
     //favorites: state.favorites.results
   });
+
+const mapDispatchToProps = dispatch => ({
+    setPage: (page) => dispatch(setPage(page))
+})
   
   export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(Results);

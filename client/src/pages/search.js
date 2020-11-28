@@ -186,7 +186,7 @@ class Search extends Component {
                             <div className="indeterminate"></div>
                         </div>}
                         {!this.props.isLoading && <div><Results
-                            type='search-results'
+                            page='search'
                             />
                         </div>}
                         {this.state.invalidZip && <Alert page='invalid zip'/>}
