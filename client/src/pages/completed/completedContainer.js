@@ -26,7 +26,7 @@ function CompletedContainer(props) {
             
         <div className='completed index-card-bg'>
             <div className='col s8 offset-s2'>
-                {!props.isLoading && <Results />}
+                {!props.isLoading && <Results page='completed' />}
             </div>
         </div>
     </div>
