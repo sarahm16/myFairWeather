@@ -8,6 +8,8 @@ import Navbar from '../components/navbar/index';
 import API from '../utils/API';
 import './styles.css'
 
+import ChartistGraph from 'react-chartist';
+
 
 class Stats extends Component {
 
@@ -188,12 +190,15 @@ class Stats extends Component {
     // }
 
     render() {
+        console.log(this.state.elevation);
+        let elevationData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            series: [this.state.elevation]
+        }
         return(
             <div>
                 <Navbar page='stats' />
-                <div className="ct-chart ct-perfect-fourth">
-                    
-                </div>
+                <ChartistGraph data={elevationData} type='Bar' />
             </div>
         )
     }
