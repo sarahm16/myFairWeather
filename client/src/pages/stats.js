@@ -195,10 +195,21 @@ class Stats extends Component {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             series: [this.state.elevation]
         }
+        let mileData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            series: [this.state.miles]
+        }
         return(
             <div>
                 <Navbar page='stats' />
-                <ChartistGraph data={elevationData} type='Bar' />
+
+                <div><h2 className='banner'>***** Under Construction *****</h2></div>
+                <div className='container graphs'>
+                    <div className='ct-chart'>
+                        <ChartistGraph className='graph' style={{stroke: 'white'}} data={elevationData} type='Bar' />
+                        <ChartistGraph className='graph' data={mileData} type='Bar' />
+                    </div>
+                </div>
             </div>
         )
     }
