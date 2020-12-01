@@ -29,37 +29,37 @@ class Stats extends Component {
     }
 
 
-    // componentDidMount() {
-    //     let totalElevation = 0;
-    //     let totalMiles = 0;
-    //     let elevationByMonth = [0,0,0,0,0,0,0,0,0,0,0,0];
-    //     let milesByMonth = [0,0,0,0,0,0,0,0,0,0,0,0];
+    componentDidMount() {
+        let totalElevation = 0;
+        let totalMiles = 0;
+        let elevationByMonth = [0,0,0,0,0,0,0,0,0,0,0,0];
+        let milesByMonth = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-    //     API.getStats(this.props.auth.user.id)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             for(let i=0; i<res.data.length; i++) {
+        API.getStats(this.props.auth.user.id)
+            .then(res => {
+                console.log(res.data)
+                for(let i=0; i<res.data.length; i++) {
                     
-    //                 //arrays of data from api call for stats chart
-    //                 let month = res.data[i].day.split('-')[1];
-    //                 elevationByMonth[month-1] += res.data[i].ascent;
-    //                 milesByMonth[month-1] += parseInt(res.data[i].length)
+                    //arrays of data from api call for stats chart
+                    let month = res.data[i].day.split('-')[1];
+                    elevationByMonth[month-1] += res.data[i].ascent;
+                    milesByMonth[month-1] += parseInt(res.data[i].length)
 
-    //                 //calculating total miles and total elevation gain
-    //                 let miles = parseInt(res.data[i].length)
-    //                 totalElevation += res.data[i].ascent;
-    //                 totalMiles += miles
+                    //calculating total miles and total elevation gain
+                    let miles = parseInt(res.data[i].length)
+                    totalElevation += res.data[i].ascent;
+                    totalMiles += miles
 
-    //             }
-    //             this.setState({
-    //                 elevation: elevationByMonth,
-    //                 miles: milesByMonth,
-    //                 totalElevation: totalElevation,
-    //                 totalMiles: totalMiles,
-    //                 hikeCount: res.data.length
-    //             })
-    //         })
-    // }
+                }
+                this.setState({
+                    elevation: elevationByMonth,
+                    miles: milesByMonth,
+                    totalElevation: totalElevation,
+                    totalMiles: totalMiles,
+                    hikeCount: res.data.length
+                })
+            })
+    }
 
     // render() {
     //     return <div className = "">
@@ -186,6 +186,17 @@ class Stats extends Component {
     //         </div>
     //     </div>
     // }
+
+    render() {
+        return(
+            <div>
+                <Navbar page='stats' />
+                <div className="ct-chart ct-perfect-fourth">
+                    
+                </div>
+            </div>
+        )
+    }
 }
 
 Stats.propTypes = {
