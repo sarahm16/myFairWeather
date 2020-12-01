@@ -20,6 +20,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "chartist": "^0.11.4",
     "compression": "^1.7.4",
     "concurrently": "^4.1.2",
     "connect-timeout": "^1.9.0",
@@ -32,8 +33,7 @@
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "react-chartjs-2": "^2.9.0",
-    "react-image-file-resizer": "^0.3.8",
+    "react-chartist": "^0.14.3",
     "validator": "^10.11.0",
     "zipcodes": "^8.0.0"
   }
