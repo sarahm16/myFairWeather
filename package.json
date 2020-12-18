@@ -20,6 +20,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.4",
     "chartist": "^0.11.4",
     "compression": "^1.7.4",
     "concurrently": "^4.1.2",
@@ -34,6 +35,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react-chartist": "^0.14.3",
+    "react-chartjs-2": "^2.11.1",
     "validator": "^10.11.0",
     "zipcodes": "^8.0.0"
   }
