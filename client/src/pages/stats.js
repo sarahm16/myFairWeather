@@ -8,7 +8,7 @@ import Navbar from '../components/navbar/index';
 import API from '../utils/API';
 import './styles.css'
 
-import ChartistGraph from 'react-chartist';
+//import ChartistGraph from 'react-chartist';
 
 
 class Stats extends Component {
