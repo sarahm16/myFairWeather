@@ -24,12 +24,6 @@ class Stats extends Component {
         }
     }
 
-    render() {
-        return(
-            <div></div>
-        )
-    }
-
 
     componentDidMount() {
         let totalElevation = 0;
