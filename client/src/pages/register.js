@@ -7,6 +7,8 @@ import classnames from "classnames";
 import Button from '../components/button';
 import Label from '../components/label';
 
+import M from 'materialize-css';
+
 class Register extends Component {
   constructor() {
     super();
@@ -24,6 +26,7 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+    M.updateTextFields()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +83,7 @@ class Register extends Component {
                     invalid: errors.name
                   })}
                 />
-                <Label name='name' />
+                <label htmlFor='name'>Name </label>
                 <span className="red-text">{errors.name}</span>
               </div>
               <div className="input-field col s12">
@@ -94,7 +97,7 @@ class Register extends Component {
                     invalid: errors.email
                   })}
                 />
-                <Label name='email' />
+                <label htmlFor='email'>Email</label>
                 <span className="red-text">{errors.email}</span>
               </div>
               <div className="input-field col s12">
@@ -108,7 +111,7 @@ class Register extends Component {
                     invalid: errors.password
                   })}
                 />
-                <Label name='password' />
+                <label htmlFor='password'>Password</label>
                 <span className="red-text">{errors.password}</span>
               </div>
               <div className="input-field col s12">
@@ -122,7 +125,7 @@ class Register extends Component {
                     invalid: errors.password2
                   })}
                 />
-                <Label name='password2' />
+                <label htmlFor='password2'>Retype password</label>
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>

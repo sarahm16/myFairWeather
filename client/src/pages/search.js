@@ -111,7 +111,8 @@ class Search extends Component {
                                 <i className="material-icons">my_location</i>
                             </div>
                             <div className='col s4 m2 or'>OR</div>
-                            <div className='input-field col s4 m5'>                                <input
+                            <div className='input-field col s4 m5'>                                
+                                <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
