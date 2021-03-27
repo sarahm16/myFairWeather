@@ -6,6 +6,13 @@ module.exports = function(app) {
             target: 'https://www.hikingproject.com',
             changeOrigin: true
         })
+    ),
+
+    app.use(
+        proxy('/data/2.5/forecast', {
+            target: 'https://api.openweathermap.org',
+            changeOrigin: true
+        })
     )
 }
 
