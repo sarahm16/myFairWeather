@@ -36,5 +36,8 @@
     "react-chartjs-2": "^2.11.1",
     "validator": "^10.11.0",
     "zipcodes": "^8.0.0"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.6"
   }
 }

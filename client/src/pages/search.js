@@ -73,23 +73,24 @@ class Search extends Component {
     searchHikes = () => {
         //grab user inputs from search form
         const { latitude, longitude, minLength, maxTravel, maxElevation, sort } = this.state;
-        
+        console.log(this.state.latitude)
         //dispatch search action to search reducer
         this.props.search(latitude, longitude, minLength, maxTravel, maxElevation, sort);
     }
 
-    onSubmit(event) {
+    onSubmit = (event) => {
         event.preventDefault();
 
         let { zipcode } = this.state;
 
         if(zipcode !== '') {
             if(zipcodes.lookup(zipcode)) {
+                console.log(zipcodes.lookup(zipcode).latitude)
                 this.setState({
                     latitude: zipcodes.lookup(zipcode).latitude,
                     longitude: zipcodes.lookup(zipcode).longitude
-                })
-                this.searchHikes();
+                }, () => this.searchHikes());
+                
             }
             else {this.setState({invalidZip: true})}
         }

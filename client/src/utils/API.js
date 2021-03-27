@@ -3,13 +3,14 @@ import axios from 'axios';
 export default {
 
     searchHikes: function(lat, lon, length, dist, elev, sort) {
+        console.log(lat);
         let resultQty = "&maxResults=50";
         let apiKey = process.env.REACT_APP_HIKING_PROJECT_API_KEY;
         
-        let hikerequest = "https://cors-anywhere.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
+        let hikerequest = "/data/get-trails?";
         let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}&sort=${sort}${resultQty}${apiKey}`;
 
-        return axios.get(query)
+        return axios.get(query);
                 
     },
 

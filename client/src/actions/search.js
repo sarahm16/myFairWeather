@@ -5,6 +5,8 @@ export const search = (latitude, longitude, minLength, maxTravel, maxElevation, 
   return dispatch => {
     API.searchHikes(latitude, longitude, minLength, maxTravel, maxElevation, sort)
       .then(res => {
+        console.log('cors')
+        console.log(res)
         dispatch({type: 'SEARCH_REQUEST'});
         if(maxElevation !== null) {
           const filteredHikes = res.data.trails.filter(trail => trail.ascent < maxElevation)
