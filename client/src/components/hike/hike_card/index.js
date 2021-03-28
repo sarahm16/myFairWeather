@@ -28,8 +28,9 @@ class HikeCard extends Component {
 
     componentDidMount() {
         let imageArray = this.props.userImage;
-        this.props.type === 'completed-hikes' ? imageArray.unshift(this.props.imgMedium) : imageArray = [this.props.imgMedium];
-        
+
+        this.props.page === 'completed' ? imageArray.push(this.props.imgMedium) : imageArray = [this.props.imgMedium];
+
         let ratings = ['green', 'greenBlue', 'blue', 'blueBlack', 'black'];
         let difficulty = ratings.slice(0, ratings.indexOf(this.props.difficulty)+1)
         
@@ -102,6 +103,7 @@ class HikeCard extends Component {
     }
 
     submitComplete = (event) => {
+        console.log(this.state.userImage)
         event.preventDefault();
         let completedHike = [this.props];
         completedHike.push({'userComment': this.state.userComment, 'Date': null, userImage: this.state.userImage})
@@ -118,26 +120,7 @@ class HikeCard extends Component {
             }
             this.setState({forecast: forecastData});
             return;
-        // }).then(() =>{
-        //     let bestTemp = Weather.getBestDay(this.state.forecast);
-        //     return bestTemp;
-        // })
-        // .then((bestTemp)=>{
-        //     let bestWeather = Weather.bestWeather(bestTemp);
-        //     return bestWeather;
-        // })
-        // .then((res)=>{
-        //     let sorted = Weather.weatherSort(res);
-        //     let bestWeather;
-        //     if(sorted.constructor === Array){
-        //         bestWeather = sorted;
-        //     } else{
-        //         bestWeather = [sorted];
-        //     }
-        //     this.setState({
-        //         bestDay: bestWeather,
-        //     })
-        //     return;
+
         }).then(()=>{
             this.setState({show_more: true});
             return;
@@ -178,7 +161,7 @@ render () {
                         {this.props.page === 'completed' && <ul className="pagination">
                             <li className="disabled"><button id='prev' onClick={this.prevImage}><i className="material-icons">chevron_left</i></button></li>
                                 {this.state.imageArray.map((image, index) => {
-                                    return(<li><a href="#!"><i style={{color: index == this.state.imageNumber ? 'teal' : 'gray'}} className={index == this.state.imageNumber ? 'material-icons material-icons-outlined' : 'material-icons'}>fiber_manual_record</i></a></li>)
+                                    return(<li><a href="#!"><i style={{color: 'teal'}} className={index == this.state.imageNumber ? 'material-icons' : 'material-icons material-icons-outlined'}>fiber_manual_record</i></a></li>)
                                 })}
                             <li className="waves-effect"><button id='next' onClick={this.nextImage}><i className="material-icons">chevron_right</i></button></li>
                         </ul>}

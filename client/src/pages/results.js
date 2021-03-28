@@ -18,6 +18,7 @@ class Results extends Component  {
     }
 
     componentDidMount() {
+        console.log(this.props.results);
         this.setState({
             trails: this.props.results.slice(0, 10)
         })

@@ -138,7 +138,7 @@ router.post('/favorite', function(req,res) {
 })
 
 router.post('/completed', function(req,res) {
-  //console.log(req.body)
+  // console.log(req.body.userImage)
   Completed.create({
     userID: req.body[0].auth.user.id,
     id: req.body[0].id,
