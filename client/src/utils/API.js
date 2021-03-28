@@ -38,7 +38,7 @@ export default {
     },
 
     getWeather: async function(hike){
-        let weatherRequest = "https://gentle-chamber-99717.herokuapp.com/https://www.hikingproject.com/data/2.5/forecast?";
+        let weatherRequest = "https://gentle-chamber-99717.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?";
         let lat = "lat="+hike.latitude
         let lon = "&lon="+hike.longitude
         let units = "&units=imperial";

@@ -58,10 +58,6 @@ class Register extends Component {
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2 form-background">
-            {/* <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link> */}
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4 className="color-black">
                 <b>Register</b> below
@@ -140,7 +136,7 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired
 };
 
