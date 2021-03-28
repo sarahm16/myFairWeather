@@ -7,7 +7,7 @@ export default {
         let resultQty = "&maxResults=50";
         let apiKey = process.env.REACT_APP_HIKING_PROJECT_API_KEY;
         
-        let hikerequest = "/data/get-trails?";
+        let hikerequest = "https://gentle-chamber-99717.herokuapp.com/https://www.hikingproject.com/data/get-trails?";
         let query = `${hikerequest}lat=${lat}&lon=${lon}&minLength=${length}&maxDistance=${dist}&sort=${sort}${resultQty}${apiKey}`;
 
         return axios.get(query);
@@ -38,7 +38,7 @@ export default {
     },
 
     getWeather: async function(hike){
-        let weatherRequest = "/data/2.5/forecast?";
+        let weatherRequest = "https://gentle-chamber-99717.herokuapp.com/https://www.hikingproject.com/data/2.5/forecast?";
         let lat = "lat="+hike.latitude
         let lon = "&lon="+hike.longitude
         let units = "&units=imperial";
