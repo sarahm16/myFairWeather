@@ -57,7 +57,7 @@ class Register extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s8 offset-s2 form-background">
+          <div className="col s12 m8 offset-m2 form-background">
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4 className="color-black">
                 <b>Register</b> below
