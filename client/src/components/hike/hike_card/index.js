@@ -84,6 +84,7 @@ class HikeCard extends Component {
     }
     
     addFav = () => {
+        console.log(this.props)
         API.addFavorite(this.props);
     }
 
@@ -199,7 +200,7 @@ render () {
                     //<Timer />
                     }
                     <div className="card-action no-padding">
-                        {this.props.page !== 'favorite' && <button className="btn-large btn-by2" onClick={this.addFav}>Add to Favorites <i className="small material-icons icon-yellow">star</i></button>}
+                        {this.props.page !== 'favorite' && <button className="btn-large btn-by2" onClick={this.addFav}>Save <i className="small material-icons icon-yellow">star</i></button>}
 
                         {this.props.page !=='completed' &&<button className="btn-large btn-by2" onClick={this.toggleModal}>Complete <i className="small material-icons icon-green">check</i></button>}
 
