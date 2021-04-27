@@ -112,13 +112,13 @@ class Search extends Component {
                                 <i className="material-icons">my_location</i>
                             </div>
                             <div className='col s4 m2 or'>OR</div>
-                            <div className='input-field col s4 m5'>                                
+                            <div className='input-field zipcode-field col s4 m5'>                                
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
                                 />
-                                <label className='active' htmlFor="zipcode">Enter Your Zipcode:</label>
+                                <label className='active zipcode-label' htmlFor="zipcode">Enter Your Zipcode:</label>
                             </div>
                             <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
@@ -153,33 +153,35 @@ class Search extends Component {
                                     })}
                                 </select>
                             </div>
-                            <div className='col s4 sort-buttons'>Sort by:</div>  
-                            <div className='col s4 sort-buttons'>
-                                <label>
-                                    <input 
-                                    onChange={this.onChange} 
-                                    value='distance'
-                                    id='sort' className="with-gap" 
-                                    name="group1" type="radio" 
-                                    checked={this.state.sort === 'distance'}  />
-                                    <span>Distance</span>
-                                </label>
-                            </div>
-                            <div className='col s4 sort-buttons'>
-                                <label>
-                                    <input 
-                                    onChange={this.onChange} 
-                                    value='quality'
-                                    id='sort' className="with-gap" 
-                                    name="group1" type="radio" 
-                                    checked={this.state.sort === 'quality'}  />
-                                    <span>Quality</span>
-                                </label>
+                            <div className='sort-field'>
+                                <div className=' col s4 sort-buttons'>Sort by:</div>  
+                                <div className=' col s4 sort-buttons'>
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' className="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                                </div>
+                                <div className=' col s4 sort-buttons'>
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='quality'
+                                        id='sort' className="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'quality'}  />
+                                        <span>Quality</span>
+                                    </label>
+                                </div>
                             </div>
                             <br />
                             <br />
                             <div className='row'>
-                                <div className='col s12'>
+                                <div className='search-button col s12'>
                                     <Button name='Search Hikes' type='submit' />
                                 </div>
                             </div>
