@@ -206,9 +206,10 @@ render () {
 
                         {this.props.page == 'favorite' && <button className="btn-large btn-by2" id="delete-favorite" onClick={this.deleteFav}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
                         {this.props.page == 'completed' && <button className="btn-large btn-by2" id="delete-completed" onClick={this.deleteCompleted}>Remove <i className="small material-icons icon-red">delete_forever</i></button>}
-
-                        {!this.state.show_more && <button id="More-Info" onClick={this.moreInfo}>More Info<i className="small material-icons icon-black">expand_more</i></button>}
-                        {this.state.show_more && <button id="Less-Info" onClick={this.lessInfo}>Less Info<i className="small material-icons icon-white">expand_less</i></button>}
+                        <div className='forecast-info'>
+                            {!this.state.show_more && <button id="More-Info" onClick={this.moreInfo}>More Info<i className="small material-icons icon-black expand-more">expand_more</i></button>}
+                            {this.state.show_more && <button id="Less-Info" onClick={this.lessInfo}>Less Info<i className="small material-icons icon-white expand-less">expand_less</i></button>}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -73,10 +73,17 @@
 #Less-Info {
     border: none;
     border-radius: 5px;
-    padding-bottom: 10px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    padding: 10px 0px 10px 0px;
+    background-color: transparent;
 }
+
+i {
+    vertical-align: middle
+}
+
+/* .forecast-info {
+    line-height: 200px;
+} */
 
 .no-padding
 {

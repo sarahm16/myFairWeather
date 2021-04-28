@@ -25,7 +25,7 @@ class Search extends Component {
                 minLength: "",
                 maxElevation: "",
                 maxTravel: "",
-                sort: "",
+                sort: "quality",
                 latitude: 0,
                 longitude: 0,
                 zipcode: '',
@@ -161,17 +161,6 @@ class Search extends Component {
                                     <label>
                                         <input 
                                         onChange={this.onChange} 
-                                        value='distance'
-                                        id='sort' className="with-gap" 
-                                        name="group1" type="radio" 
-                                        checked={this.state.sort === 'distance'}  />
-                                        <span>Distance</span>
-                                    </label>
-                                </div>
-                                <div className=' col s4 sort-buttons'>
-                                    <label>
-                                        <input 
-                                        onChange={this.onChange} 
                                         value='quality'
                                         id='sort' className="with-gap" 
                                         name="group1" type="radio" 
@@ -179,9 +168,18 @@ class Search extends Component {
                                         <span>Quality</span>
                                     </label>
                                 </div>
+                                <div className=' col s4 sort-buttons'>
+                                    <label>
+                                        <input 
+                                        onChange={this.onChange} 
+                                        value='distance'
+                                        id='sort' className="with-gap" 
+                                        name="group1" type="radio" 
+                                        checked={this.state.sort === 'distance'}  />
+                                        <span>Distance</span>
+                                    </label>
+                                </div>
                             </div>
-                            <br />
-                            <br />
                             <div className='row'>
                                 <div className='search-button col s12'>
                                     <Button name='Search Hikes' type='submit' />
