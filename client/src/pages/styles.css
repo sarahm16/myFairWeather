@@ -87,10 +87,19 @@ form {
 }
 
 .or {
-    width: 60%;
-    margin: 0 auto;
-    padding-top: 40px;
-}
+    display: grid;
+    grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+    align-items: center;
+    text-align: center;
+    grid-gap: 10px;
+    color: rgb(12, 12, 82);
+  }
+  
+  .or:before,
+  .or:after {
+    content: '';
+    border-top: 2px solid;
+  }
 
 .login-container {
     margin: 0 auto;

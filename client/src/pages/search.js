@@ -108,7 +108,7 @@ class Search extends Component {
                     <div className='push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
                             <div className='col s4 m4'>
-                                Search by current location <br />
+                                Use current location <br />
                                 <i className="material-icons">my_location</i>
                             </div>
                             <div className='col s3 m4 or'>OR</div>

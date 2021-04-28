@@ -21,21 +21,7 @@ nav.nav-center ul li a {
   display: inline-block;
 }
 
-.or {
-  display: grid;
-  grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
-  align-items: center;
-  text-align: center;
-  grid-gap: 10px;
-  width: 100%;
-  color: rgb(12, 12, 82);
-}
 
-.or:before,
-.or:after {
-  content: '';
-  border-top: 2px solid;
-}
 
 .alert {
   margin-top: 10px;
