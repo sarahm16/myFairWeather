@@ -73,10 +73,23 @@ form {
 .zipcode-field {
     margin-top: 0px;
     margin-bottom: 0px;
+    padding-left: 5px;
+    text-align: center;
 }
 
 .zipcode-label {
-    text-align: center
+    width: 80%;
+    padding-left: 5px;
+}
+
+#zipcode {
+    width: 80%;
+}
+
+.or {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 40px;
 }
 
 .login-container {

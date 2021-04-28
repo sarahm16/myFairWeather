@@ -107,18 +107,20 @@ class Search extends Component {
                 <div className='search row index-card-bg'>
                     <div className='push-m2 col-pad'>
                         <form className="form-background" noValidate onSubmit={this.onSubmit.bind(this)}>
-                            <div className='col s4 m5'>
+                            <div className='col s4 m4'>
                                 Search by current location <br />
                                 <i className="material-icons">my_location</i>
                             </div>
-                            <div className='col s4 m2 or'>OR</div>
-                            <div className='input-field zipcode-field col s4 m5'>                                
+                            <div className='col s3 m4 or'>OR</div>
+                            
+                            <div className='input-field zipcode-field col s5 m4 '>                                
                                 <input
                                     onChange={this.onChange}
                                     value={this.state.zipcode}
                                     id="zipcode"
+                                    type='number'
                                 />
-                                <label className='active zipcode-label' htmlFor="zipcode">Enter Your Zipcode:</label>
+                                <label className='zipcode-label' htmlFor="zipcode">Enter Zipcode:</label>
                             </div>
                             <div className='input-field col s12 divider'></div>
                             <div className='input-field col s12'>
@@ -189,8 +191,9 @@ class Search extends Component {
                         {this.props.isLoading && <div className="progress">
                             <div className="indeterminate"></div>
                         </div>}
-                        {!this.props.isLoading && <div><Results
-                            page='search'
+                        {!this.props.isLoading && <div>
+                            <Results
+                                page='search'
                             />
                         </div>}
                         {this.state.invalidZip && <Alert page='invalid zip'/>}
