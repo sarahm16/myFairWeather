@@ -4,8 +4,7 @@ import './style.css';
 
 
 function WeatherCard(props) {
-    let date = new Date();
-    console.log(date)
+    
   return(
         <div>
             {props.forecast.map(day =>(

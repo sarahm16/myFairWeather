@@ -22,11 +22,17 @@ class HikeCard extends Component {
             userImage: [],
             difficulty: [],
             imageArray: [],
-            imageNumber: 0
+            imageNumber: 0,
+            date: ''
         }
     }
 
     componentDidMount() {
+        let date = new Date(this.props.day);
+        this.setState({
+            date: `${date.getMonth() +1}-${date.getDate()}-${date.getFullYear()}`
+        })
+        
         let imageArray = this.props.userImage;
 
         this.props.page === 'completed' ? imageArray.push(this.props.imgMedium) : imageArray = [this.props.imgMedium];
@@ -38,8 +44,6 @@ class HikeCard extends Component {
             difficulty: difficulty,
             imageArray: imageArray
         })
-
-        console.log(this.props.page)
     }
 
     toggleModal = () => {
@@ -147,7 +151,7 @@ render () {
             <div className="col s12 m12 l12">
                 <div className="card hoverable border">
                         <div className="card-image">
-                        {this.props.page =='completed' && <div className='date'>Completed: {this.props.day}</div>}
+                        {this.props.page =='completed' && <div className='date'>Completed: {this.state.date}</div>}
                         {/* {this.props.type =='completed-hikes' && <div className='date'>Completed: {Moment(this.props.day).format("MMM Do YYYY")}</div>} */}
                         {this.props.page !=='completed' && <div className='location'>
                                 <i className="material-icons">location_on</i> {this.props.location}
@@ -185,7 +189,7 @@ render () {
                                 
                                 <div className='row'>
                                     <div className='col s12 m12 l12'>
-                                        {this.props.type =='completed-hikes' && <p className='report'>Report: {this.props.userComment}</p>}
+                                        {this.props.type =='completed' && <p className='report'>Report: {this.props.userComment}</p>}
                                     </div>
                                 </div>
                             </div>

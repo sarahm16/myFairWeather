@@ -46,6 +46,7 @@ class Results extends Component  {
                     </div> } */}
                 {/* map the array of trails, create hikecard component for each trail */}
                 {this.state.trails.map(trail => {
+                    console.log(trail.day);
                     return <HikeCard type={this.props.type}
                     id={trail.id}
                     key={trail.id}

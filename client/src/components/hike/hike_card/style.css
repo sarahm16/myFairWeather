@@ -9,25 +9,10 @@
     padding: 5px;
 }
 
-/* .next {
-    position: relative;
-    top: 120px;
-    z-index: 10;
-    text-align: right;
-}
-
-.prev {
-    position: relative;
-    top: 120px;
-    z-index: 10;
-    text-align: left;
-} */
-
 #prev,
 #next {
     background-color: white;
     border: none
-
 }
 
 .location {
@@ -81,9 +66,6 @@ i {
     vertical-align: middle
 }
 
-/* .forecast-info {
-    line-height: 200px;
-} */
 
 .no-padding
 {
